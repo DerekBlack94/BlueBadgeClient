@@ -22,16 +22,18 @@ function App () {
     setSessionToken('');
   }
 
-  const protectedViews = () => {
+  //**need to have Auth set up before use */
+
+  /*const protectedViews = () => {
     return (sessionToken === localStorage.getItem('token') ? <CharacterIndex token={sessionToken}/>
     : <Auth updateToken={updateToken}/> ) 
-  }
+  }*/
 
 
   return (
     <div>
       <Sitebar clickLogout={clearToken}/>
-      {protectedViews()}
+      {/* {protectedViews()}  --> set up auth first */} 
     </div>
   );
 }

@@ -16,7 +16,8 @@ const Sitebar = (props) => {
         setIsOpen(newIsOpen);
     }
     return(
-        <Navbar color="black" light expand="md">
+        <Navbar color="grey" light expand="md">
+            <NavbarBrand href="/">Character Creator</NavbarBrand>
             <NavbarToggler onClick={toggle}/>
             <Collapse isOpen={isOpen} navbar>
                 <Nav className='ml-auto' navbar>

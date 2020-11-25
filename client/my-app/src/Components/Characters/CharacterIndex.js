@@ -4,7 +4,7 @@ import CharacterCreate from './CharacterCreate';
 import CharacterTable from './CharacterTable';
 import CharacterEdit from './CharacterEdit';
 
-const WorkoutIndex = (props) => {
+const CharacterIndex = (props) => {
     const [characters, setCharacters] = useState([]);
     const [updateActive, setUpdateActive] = useState(false);
     const [characterToUpdate, setCharacterToUpdate] = useState({});
@@ -17,15 +17,36 @@ const WorkoutIndex = (props) => {
                 'Authorization' : props.token
             })
         }) .then((res) => res.json())
-        .then((logData) => {
-            setCharacters(logData)
+        .then((charData) => {
+            setCharacters(charData)
         })
-    }
+        /*useEffect(() => {
+            fetchCharacters();
+        }, [])*/
+    
 
 
 
-
-
-
+    return(
+        <Container>
+            <Row>
+                <Col>
+                
+                </Col>
+            </Row>
+        </Container>
+    );
+    };
 }
 
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    export default CharacterIndex;
