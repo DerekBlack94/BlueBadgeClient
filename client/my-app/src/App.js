@@ -34,6 +34,7 @@ function App () {
     <div>
       <Sitebar clickLogout={clearToken}/>
       {/* {protectedViews()}  --> set up auth first */} 
+      <CharacterIndex />
     </div>
   );
 }

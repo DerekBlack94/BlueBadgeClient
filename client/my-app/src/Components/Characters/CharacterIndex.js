@@ -23,30 +23,20 @@ const CharacterIndex = (props) => {
         /*useEffect(() => {
             fetchCharacters();
         }, [])*/
-    
+    };
 
-
-
-    return(
+return(
+    <div>
         <Container>
             <Row>
                 <Col>
-                
+                <CharacterCreate />
                 </Col>
             </Row>
         </Container>
+    </div>
     );
-    };
 }
 
 
-    
-    
-
-    
-    
-    
-    
-    
-    
-    export default CharacterIndex;
+export default CharacterIndex;
