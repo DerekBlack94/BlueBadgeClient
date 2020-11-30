@@ -16,30 +16,36 @@ const CharacterIndex = (props) => {
                 'Content-Type': 'application/json',
                 'Authorization' : props.token
             })
-        }) .then((res) => res.json())
-        .then((charData) => {
-            setCharacters(charData)
+        }) 
+            .then((res) => res.json())
+            .then((charData) => {
+                setCharacters(charData)
         })
-        /*useEffect(() => {
+    };
+
+    const editUpdateCharacter = (character) => {
+        setCharacterToUpdate(character);
+        console.log(character);
+    }
+
+
+    const updateOn = () => {
+        setUpdateActive(true);
+    }
+    
+    const updateOff = () => {
+        setUpdateActive(false);
+    }
+
+    /*useEffect(() => {
             fetchCharacters();
         }, [])*/
-        const editUpdateCharacter = (workout) => {
-            setCharacterToUpdate(workout);
-            console.log(workout);
-        }
-        const updateOn = () => {
-            setUpdateActive(true);
-        }
-        const updateOff = () => {
-            setUpdateActive(false);
-        }
-    
 
-
-
-    return(
+return(
+    <div>
         <Container>
             <Row>
+
                 <Col md="6">
                     <CharacterCreate fetchCharacters={fetchCharacters} token={props.token}/>
                 </Col>
@@ -50,21 +56,11 @@ const CharacterIndex = (props) => {
                 </Col>
                 {updateActive ? <CharacterEdit characterToUpdate={characterToUpdate}
                 updateOff={updateOff} token={props.token} fetchCharacters={fetchCharacters}/> : <></>}
+
             </Row>
         </Container>
+    </div>
     );
-    };
 }
 export default CharacterIndex;
 
-
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
