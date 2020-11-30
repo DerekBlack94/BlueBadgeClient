@@ -1,6 +1,7 @@
 import './Navbar.css'
 import React, {useState} from 'react';
 // import 'https://cdnjs.cloudflare.com/ajax/libs/reactstrap/4.8.0/reactstrap.min.js'
+import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 import { 
     Navbar,
     NavbarBrand,
@@ -13,8 +14,10 @@ import {
     Dropdown, DropdownItem, DropdownToggle, DropdownMenu,
     Form,
     FormControl,
-    Input
+    Input,
 }  from 'reactstrap';
+import CharacterTable from '../Characters/CharacterTable';
+import CharacterCreate from '../Characters/CharacterCreate';
 
 
 const Sitebar = (props) => {
@@ -29,48 +32,64 @@ const Sitebar = (props) => {
     }
     return(
         
+    <div className='parent'>
+
         <Navbar color="dark" light expand="md">
             {/* <NavbarBrand className="blue"  href="/"> EPIC CHARACTER CREATOR</NavbarBrand> */}
             
             <NavbarToggler onClick={toggle2}/>
             <Collapse isOpen={isOpen} navbar>
-                <Nav className="mr-auto" >
-                    <NavItem>
-                        <NavLink className="blue" href="/">EPIC  CHARACTER CREATOR</NavLink>
-                    </NavItem>
-                    <NavItem>
-                    <Dropdown className="charDropdown" nav isOpen={dropdownOpen} toggle={toggle}>
-          <DropdownToggle nav caret>
-            Characters
-          </DropdownToggle>
-          <DropdownMenu>
-            <DropdownItem header>Character Options</DropdownItem>
-            <DropdownItem >Browse Characters</DropdownItem>
-            <DropdownItem>Create Character</DropdownItem>
-            <DropdownItem>Update Character</DropdownItem>
-            <DropdownItem>Delete Character</DropdownItem>
-            <DropdownItem divider />
-            <DropdownItem>Close</DropdownItem>
-            
-          </DropdownMenu>
-        </Dropdown>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink className="invite" href="/">Invite Friends</NavLink>
-                    </NavItem>
+            <Nav className="mr-auto" >
+                <NavItem>
+                    <NavLink className="blue" href="/">EPIC  CHARACTER CREATOR</NavLink>
+                </NavItem>
                     
+                <div className='dropdown'>
+                <Router>
+                    <div className='styling'>
                     <NavItem>
+                        <Dropdown className="charDropdown" nav isOpen={dropdownOpen} toggle={toggle}>
+                            <DropdownToggle nav caret>Characters</DropdownToggle>
+                            <DropdownMenu>
+                                <DropdownItem header>Character Options</DropdownItem>
+                                <DropdownItem><Link to='/characters' >Browse Characters</Link></DropdownItem>
+                                <DropdownItem><Link to='/charactercreate'>Create Character</Link></DropdownItem>
+                                <DropdownItem divider />
+                                <DropdownItem>Close</DropdownItem>
+                            </DropdownMenu>
+                        </Dropdown>
                     </NavItem>
-                </Nav>
-                <Form inline>
+                    </div>
+                </Router>
+                </div>
+
+                    
+                <NavItem>
+                    <NavLink className="invite" to="/invite">Invite Friends</NavLink>
+                </NavItem>
+        
+            </Nav>
+
+            <Form inline>
                 <Input type="text" placeholder="Search Character" className="mr-sm-2" />
                 <Button className="infoBtn" outline color="info">Search </Button>
-                </Form>
-                <br/>
+            </Form>
+
+            <br/>
                 
-                        <Button className="logoutBtn" size="lg" color="danger" onClick={props.clickLogout}>Logout</Button>
+            <Button className="logoutBtn" size="lg" color="danger" onClick={props.clickLogout}>Logout</Button>
             </Collapse>
         </Navbar>
+    
+        <Router>
+        <div className = 'navRoute'>
+        <Switch>
+            <Route exact path = '/characters'><CharacterTable /></Route>
+            <Route exact path = '/charactercreate'><CharacterCreate /></Route>
+        </Switch>
+        </div>
+        </Router>;
+    </div>
     )
 }
 export default Sitebar;
