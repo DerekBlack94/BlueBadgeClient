@@ -1,5 +1,5 @@
-import React from 'react';
-import {Table, Button} from 'reactstrap';
+// import React from 'react';
+// import {Table, Button} from 'reactstrap';
 
 const CharacterTable = (props) => {
     const deleteCharacter = ( character ) => {
