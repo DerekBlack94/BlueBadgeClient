@@ -7,7 +7,7 @@ import {Button} from 'reactstrap';
 import CharacterIndex from './Components/Characters/CharacterIndex';
 
 function App () {
-  const [sessionToken, setSessionToken] =useState('');
+  const [sessionToken, setSessionToken] = useState('');
   useEffect(() => {
     if(localStorage.getItem('token')){
       setSessionToken(localStorage.getItem('token'));
