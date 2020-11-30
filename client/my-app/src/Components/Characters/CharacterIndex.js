@@ -28,6 +28,7 @@ const CharacterIndex = (props) => {
         console.log(character);
     }
 
+
     const updateOn = () => {
         setUpdateActive(true);
     }
@@ -44,18 +45,22 @@ return(
     <div>
         <Container>
             <Row>
-                <Col>
-                    <CharacterCreate fetchCharacters={fetchCharacters} token={props.token} />
+
+                <Col md="6">
+                    <CharacterCreate fetchCharacters={fetchCharacters} token={props.token}/>
                 </Col>
-                <Col>
-                    <CharacterTable characters={characters} editUpdateCharacter={editUpdateCharacter} updateOn={updateOn} fetchCharacters={fetchCharacters} token={props.token} />
+                <Col md="9">
+                    <CharacterTable characters={characters} editUpdateCharacter={editUpdateCharacter}
+                    updateOn={updateOn}
+                    fetchCharacters={fetchCharacters} token={props.token}/>
                 </Col>
-                {updateActive ? <CharacterEdit characterToUpdate={characterToUpdate} updateOff={updateOff} token={props.token} fetchCharacters={fetchCharacters} /> : <div></div> }
+                {updateActive ? <CharacterEdit characterToUpdate={characterToUpdate}
+                updateOff={updateOff} token={props.token} fetchCharacters={fetchCharacters}/> : <></>}
+
             </Row>
         </Container>
     </div>
     );
 }
-
-
 export default CharacterIndex;
+

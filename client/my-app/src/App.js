@@ -1,8 +1,10 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import Sitebar from './Components/Navbar/Navbar';
+import {Button} from 'reactstrap';
+import CharacterIndex from './Components/Characters/CharacterIndex';
 import Auth from "./Components/Auth/Auth";
-// import CharacterIndex from './Components/Characters/CharacterIndex';
+
 
 function App () {
   const [sessionToken, setSessionToken] = useState('');
