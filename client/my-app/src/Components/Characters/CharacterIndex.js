@@ -16,22 +16,41 @@ const CharacterIndex = (props) => {
                 'Content-Type': 'application/json',
                 'Authorization' : props.token
             })
-        }) .then((res) => res.json())
-        .then((charData) => {
-            setCharacters(charData)
+        }) 
+            .then((res) => res.json())
+            .then((charData) => {
+                setCharacters(charData)
         })
-        /*useEffect(() => {
+    };
+
+    const editUpdateCharacter = (character) => {
+        setCharacterToUpdate(character);
+        console.log(character);
+    }
+
+    const updateOn = () => {
+        setUpdateActive(true);
+    }
+    
+    const updateOff = () => {
+        setUpdateActive(false);
+    }
+
+    /*useEffect(() => {
             fetchCharacters();
         }, [])*/
-    };
 
 return(
     <div>
         <Container>
             <Row>
                 <Col>
-                <CharacterCreate />
+                    <CharacterCreate fetchCharacters={fetchCharacters} token={props.token} />
                 </Col>
+                <Col>
+                    <CharacterTable characters={characters} editUpdateCharacter={editUpdateCharacter} updateOn={updateOn} fetchCharacters={fetchCharacters} token={props.token} />
+                </Col>
+                {updateActive ? <CharacterEdit characterToUpdate={characterToUpdate} updateOff={updateOff} token={props.token} fetchCharacters={fetchCharacters} /> : <div></div> }
             </Row>
         </Container>
     </div>
