@@ -88,7 +88,7 @@ const Sitebar = (props) => {
             <Route exact path = '/charactercreate'><CharacterCreate /></Route>
         </Switch>
         </div>
-        </Router>;
+        </Router>
     </div>
     )
 }
