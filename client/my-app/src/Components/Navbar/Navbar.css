@@ -1,0 +1,33 @@
+.blue{
+    color:#D2691E;
+    font-weight: 900;
+    font-size: 25px;
+    font-family: 'Texturina', serif;
+}
+.infoBtn {
+    padding-right: 50%;
+    margin-right: 5vw;
+    color: #007bff;
+    font-family: 'Texturina', serif;
+
+}
+.charDropdown {
+    font-size: 23px;
+    font-family: 'Texturina', serif;
+    
+}
+.invite{
+    font-size: 23px;
+   
+    font-family: 'Texturina', serif;
+    
+}
+.logoutBtn{
+    font-family: 'Texturina', serif;
+
+}
+.mr-sm-2{
+    font-family: 'Texturina', serif;
+
+}
+
