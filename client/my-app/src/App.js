@@ -32,9 +32,9 @@ function App () {
 
   return (
     <div>
-      <Sitebar clickLogout={clearToken}/>
+      <Sitebar clickLogout={clearToken} />
       {/* {protectedViews()}  --> set up auth first */} 
-      <CharacterIndex />
+      <CharacterIndex token={sessionToken} />
     </div>
   );
 }

@@ -10,6 +10,32 @@ const CharacterCreate = (props) => {
     const [character_description, setCharacter_Description] = useState('');
     const [background, setBackground] = useState('');
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        fetch('http://localhost:3000/character/', {
+            method: 'POST',
+            body: JSON.stringify({ character : {
+                project_name: project_name, name: name, age: age, race: race, gender: gender, character_description: character_description, background: background
+            }}),
+            headers: new Headers ({
+                'Content-Type': 'application/json',
+                'Authorization': props.token
+            })
+        })
+            .then((res) => res.json())
+            .then((json) => {
+                console.log(json);
+                setProject_Name('');
+                setName('');
+                setAge();
+                setRace('');
+                setGender('');
+                setCharacter_Description('');
+                setBackground('');
+                props.fetchCharacters();
+            })
+    }
+
     return (
         <div>
             <h3>Create a Character!</h3>
@@ -84,7 +110,7 @@ const CharacterCreate = (props) => {
 
                 <br />
                 
-                <Button type='submit'>Create</Button>
+                <Button type='submit' onSubmit={handleSubmit}>Create</Button>
                 
             </Form>
         </div>
