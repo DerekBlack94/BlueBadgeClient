@@ -26,10 +26,10 @@ function App () {
 
   //**need to have Auth set up before use */
 
-  // const protectedViews = () => {
-  //   return (sessionToken === localStorage.getItem('token') ? <CharacterIndex token={sessionToken}/>
-  //   : <Auth updateToken={updateToken}/> ) 
-  // }
+  const protectedViews = () => {
+    return (sessionToken === localStorage.getItem('token') ? <CharacterIndex token={sessionToken}/>
+    : <Auth updateToken={updateToken}/> ) 
+  }
 
 
   return (
@@ -37,7 +37,7 @@ function App () {
     
       <Sitebar clickLogout={clearToken}/>
       <Auth updateToken={updateToken}/>
-      {/* {protectedViews()}  --> set up auth first */} 
+      {protectedViews()}  
       <CharacterIndex token={sessionToken} />
 
     </div>
