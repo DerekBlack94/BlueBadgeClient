@@ -3,6 +3,7 @@ import { Container, Row, Col} from 'reactstrap'
 import CharacterCreate from './CharacterCreate';
 import CharacterTable from './CharacterTable';
 import CharacterEdit from './CharacterEdit';
+import APIURL from '../../helpers/environment'
 
 const CharacterIndex = (props) => {
     const [characters, setCharacters] = useState([]);

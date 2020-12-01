@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody} from 'reactstrap';
+import APIURL from '../../helpers/environment'
 
 const CharacterEdit = (props) => {
     const [editPN, setEditPN] = useState(props.characterToUpdate.project_name);
