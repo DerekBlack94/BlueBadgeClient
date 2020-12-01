@@ -4,6 +4,7 @@ import APIURL from '../../helpers/environment'
 
 
 
+
 const Signup = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -12,7 +13,9 @@ const Signup = (props) => {
     
     const handleSubmit = (event) => {
         event.preventDefault();
+
         fetch(`${APIURL}/user/create`, {
+
             method: 'POST',
             body: JSON.stringify({user:{firstName: firstName, lastName: lastName, username: username, password: password}}),
             headers: new Headers({
@@ -45,7 +48,8 @@ const Signup = (props) => {
                     <Label htmlFor="password">Password</Label>
                     <Input onChange={(e) => setPassword(e.target.value)} name="password" value={password}/>
                 </FormGroup>
-                <Button type="submit">Signup</Button>
+                <Button className='signupBtn' type="submit">Signup</Button>
+
             </Form>
         </div>
     )

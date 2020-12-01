@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import APIURL from '../../helpers/environment'
 
+
 const CharacterCreate = (props) => {
     const [project_name, setProject_Name] = useState('');
     const [name, setName] = useState('');
@@ -11,12 +12,16 @@ const CharacterCreate = (props) => {
     const [character_description, setCharacter_Description] = useState('');
     const [background, setBackground] = useState('');
 
+    const [image, setImage] = useState({ preview: "", raw: "" });
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
         fetch(`${APIURL}/character/create`, {
             method: 'POST',
             body: JSON.stringify({ character : {
-                project_name: project_name, name: name, age: age, race: race, gender: gender, character_description: character_description, background: background
+                project_name: project_name, name: name, age: age, race: race, gender: gender, character_description: character_description, background: background, image: image
+
             }}),
             headers: new Headers ({
                 'Content-Type': 'application/json',
@@ -37,8 +42,32 @@ const CharacterCreate = (props) => {
             })
     }
 
+
+    const handleChange = e => {
+        if (e.target.files.length) {
+            setImage({
+            preview: URL.createObjectURL(e.target.files[0]),
+            raw: e.target.files[0]
+            });
+        }
+    };
+
+    const handleUpload = async e => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("image", image.raw);
+
+        await fetch('https://the-epic-character-creator.herokuapp.com/character/', {
+            method: "POST",
+            headers: {
+                "Content-Type": "multipart/form-data"
+            },
+            body: formData
+        });
+    };
+
     return (
-        <div>
+        <div className='createContainer'>
             <h3>Create a Character!</h3>
             <Form onSubmit={handleSubmit}>
                 <FormGroup>
@@ -112,7 +141,29 @@ const CharacterCreate = (props) => {
                 <br />
                 
                 <Button type='submit' onSubmit={handleSubmit}>Create</Button>
-                
+
+                <label htmlFor="upload-button">
+                    {image.preview ? (
+                        <img src={image.preview} alt="dummy" width="300" height="300" />
+                    ) : (
+                    <>
+                        <span className="fa-stack fa-2x mt-3 mb-2">
+                            <i className="fas fa-circle fa-stack-2x" />
+                            <i className="fas fa-store fa-stack-1x fa-inverse" />
+                        </span>
+                    </>
+                    )}
+                </label>
+                <input
+                    type="file"
+                    id="upload-button"
+                    style={{ display: "none" }}
+                    onChange={handleChange}
+                />
+
+                <Button onClick={handleUpload}>Upload Image</Button>
+
+
             </Form>
         </div>
     )

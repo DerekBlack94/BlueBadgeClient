@@ -21,7 +21,8 @@ import CharacterCreate from '../Characters/CharacterCreate';
 
 
 const Sitebar = (props) => {
-    const[isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const toggle = () => setDropdownOpen(!dropdownOpen);
     const toggle2 = () => {
@@ -34,7 +35,9 @@ const Sitebar = (props) => {
         
     <div className='parent'>
 
-        <Navbar color="dark" light expand="md">
+
+        <Navbar light expand="md">
+
             {/* <NavbarBrand className="blue"  href="/"> EPIC CHARACTER CREATOR</NavbarBrand> */}
             
             <NavbarToggler onClick={toggle2}/>
@@ -44,7 +47,9 @@ const Sitebar = (props) => {
                     <NavLink className="blue" href="/">EPIC  CHARACTER CREATOR</NavLink>
                 </NavItem>
                     
-                <div className='dropdown'>
+
+                {/* <div className='dropdown'>
+
                 <Router>
                     <div className='styling'>
                     <NavItem>
@@ -61,7 +66,8 @@ const Sitebar = (props) => {
                     </NavItem>
                     </div>
                 </Router>
-                </div>
+                </div> */}
+
 
                     
                 <NavItem>
@@ -70,25 +76,32 @@ const Sitebar = (props) => {
         
             </Nav>
 
+
+            <div className='search'>
+
             <Form inline>
                 <Input type="text" placeholder="Search Character" className="mr-sm-2" />
                 <Button className="infoBtn" outline color="info">Search </Button>
             </Form>
 
+            </div>
+
             <br/>
                 
-            <Button className="logoutBtn" size="lg" color="danger" onClick={props.clickLogout}>Logout</Button>
+            <Button className="logoutBtn" size="lg"  onClick={props.clickLogout}>Logout</Button>
             </Collapse>
         </Navbar>
     
-        <Router>
+        {/* <Router>
+
         <div className = 'navRoute'>
         <Switch>
             <Route exact path = '/characters'><CharacterTable /></Route>
             <Route exact path = '/charactercreate'><CharacterCreate /></Route>
         </Switch>
         </div>
-        </Router>
+        </Router> */}
+
     </div>
     )
 }
