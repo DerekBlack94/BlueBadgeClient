@@ -6,8 +6,8 @@ switch (window.location.hostname) {
     APIURL = 'http://localhost:5432';
     break;
 
-    case "project-character-creator.herokuapp.com/":
+    case "character-client.herokuapp.com/":
 
-        APIURL = 'https://project-character-creator.herokuapp.com/'
+        APIURL = 'https://character-client.herokuapp.com/'
 }
 export default APIURL;
