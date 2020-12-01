@@ -10,7 +10,7 @@ const CharacterIndex = (props) => {
     const [characterToUpdate, setCharacterToUpdate] = useState({});
 
     const fetchCharacters = () => {
-        fetch('http://localhost:3000/character', {
+        fetch('https://the-epic-character-creator.herokuapp.com/character/', {
             method: 'GET',
             headers: new Headers ({
                 'Content-Type': 'application/json',
@@ -42,18 +42,20 @@ const CharacterIndex = (props) => {
         }, [])
 
 return(
-    <div>
+    <div className='indexContainer'>
         <Container>
             <Row>
 
-                <Col md="6">
-                    <CharacterCreate fetchCharacters={fetchCharacters} token={props.token}/>
-                </Col>
-                <Col md="9">
+                <Col md="8">
                     <CharacterTable characters={characters} editUpdateCharacter={editUpdateCharacter}
                     updateOn={updateOn}
                     fetchCharacters={fetchCharacters} token={props.token}/>
                 </Col>
+
+                <Col md="4">
+                    <CharacterCreate fetchCharacters={fetchCharacters} token={props.token}/>
+                </Col>
+
                 {updateActive ? <CharacterEdit characterToUpdate={characterToUpdate}
                 updateOff={updateOff} token={props.token} fetchCharacters={fetchCharacters}/> : <></>}
 
