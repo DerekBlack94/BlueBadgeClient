@@ -8,9 +8,9 @@ import CharacterIndex from './Components/Characters/CharacterIndex';
 import './App.css';
 
 
+
 function App () {
   const [sessionToken, setSessionToken] = useState('');
-  const [passIndex, setpassIndex] = useState(false);
 
   useEffect(() => {
     if(localStorage.getItem('token')){
@@ -33,8 +33,6 @@ function App () {
   const protectedViews = () => {
     return (sessionToken === localStorage.getItem('token') ? <CharacterIndex token={sessionToken}/> : <Auth updateToken={updateToken}/> ) 
   }
-
-
 
   return (
     <div>

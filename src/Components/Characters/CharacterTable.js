@@ -1,11 +1,11 @@
 
-import React from 'react';
-import {Table, Button} from 'reactstrap';
-
+ import React from 'react';
+ import {Table, Button} from 'reactstrap';
+ import APIURL from '../../helpers/environment'
 
 const CharacterTable = (props) => {
     const deleteCharacter = ( character ) => {
-        fetch(`https://the-epic-character-creator.herokuapp.com/character/${character.id}`, {
+        fetch(`${APIURL}/character${character.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'appliction/json',
@@ -15,7 +15,6 @@ const CharacterTable = (props) => {
         .then(() => props.fetchCharacter())
     }
 
-    
 
     const characterMapper = () => {
         props.characters ? props.characters.map((character, index) => {
@@ -34,6 +33,7 @@ const CharacterTable = (props) => {
                 <td>{character.character_description}</td>
                 <td>{character.background}</td>
                 <td>{imageViewer()}</td>
+
                 <td>
                     <Button color='warning' onClick={() => {props.editUpdateCharacter(character); props.updateOn()}} >Edit</Button>
                     <Button color='danger' onClick={() => {deleteCharacter(character)}}>Delete</Button>
@@ -41,6 +41,7 @@ const CharacterTable = (props) => {
             </tr>
             )
         }) : <p>Loading...</p>
+
     }
 
 
@@ -48,6 +49,7 @@ const CharacterTable = (props) => {
 
 
 return(
+
     <div className='tableContainer'>
         <h3>Characters</h3> 
         <hr />
@@ -64,6 +66,7 @@ return(
                         <th>Description</th>
                         <th>Background</th>
                         <th>Image</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -71,6 +74,7 @@ return(
                 </tbody>
             </Table>
             </div>
+
     </div>
     );
 }

@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
+import APIURL from '../../helpers/environment'
+
 
 
 
@@ -11,7 +13,9 @@ const Signup = (props) => {
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch("https://the-epic-character-creator.herokuapp.com/user/create", {
+
+        fetch(`${APIURL}/user/create`, {
+
             method: 'POST',
             body: JSON.stringify({user:{firstName: firstName, lastName: lastName, username: username, password: password}}),
             headers: new Headers({
@@ -45,6 +49,7 @@ const Signup = (props) => {
                     <Input onChange={(e) => setPassword(e.target.value)} name="password" value={password}/>
                 </FormGroup>
                 <Button className='signupBtn' type="submit">Signup</Button>
+
             </Form>
         </div>
     )
