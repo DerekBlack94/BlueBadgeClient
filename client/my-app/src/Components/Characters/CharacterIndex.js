@@ -41,20 +41,21 @@ const CharacterIndex = (props) => {
             fetchCharacters();
         }, [])
 
-
 return(
-    <div>
+    <div className='indexContainer'>
         <Container>
             <Row>
 
-                <Col md="6">
+                <Col md="8">
+                    <CharacterTable characters={characters} editUpdateCharacter={editUpdateCharacter}
+                    updateOn={updateOn}
+                    fetchCharacters={fetchCharacters} token={props.token}/>
+                </Col>
+
+                <Col md="4">
                     <CharacterCreate fetchCharacters={fetchCharacters} token={props.token}/>
                 </Col>
-                <Col md="9">
-                    {/* <CharacterTable characters={characters} editUpdateCharacter={editUpdateCharacter}
-                    updateOn={updateOn}
-                    fetchCharacters={fetchCharacters} token={props.token}/> */}
-                </Col>
+
                 {updateActive ? <CharacterEdit characterToUpdate={characterToUpdate}
                 updateOff={updateOff} token={props.token} fetchCharacters={fetchCharacters}/> : <></>}
 

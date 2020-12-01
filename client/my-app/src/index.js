@@ -11,10 +11,11 @@ import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <div className='reactOverride'>
+      <App />
+    </div>
 
   </React.StrictMode>
- 
   ,
   document.getElementById('root')
 );

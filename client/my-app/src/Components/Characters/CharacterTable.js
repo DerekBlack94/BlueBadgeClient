@@ -15,8 +15,14 @@ const CharacterTable = (props) => {
         .then(() => props.fetchCharacter())
     }
 
+    
+
     const characterMapper = () => {
         props.characters ? props.characters.map((character, index) => {
+            const imageViewer = () => {
+                character.image != null ? <a href={character.image} target='blank'>Click to View</a> : <div></div>
+            }
+
             return(
             <tr key={index}>
                 <th scope='row'>{character.id}</th>
@@ -27,6 +33,7 @@ const CharacterTable = (props) => {
                 <td>{character.gender}</td>
                 <td>{character.character_description}</td>
                 <td>{character.background}</td>
+                <td>{imageViewer()}</td>
                 <td>
                     <Button color='warning' onClick={() => {props.editUpdateCharacter(character); props.updateOn()}} >Edit</Button>
                     <Button color='danger' onClick={() => {deleteCharacter(character)}}>Delete</Button>
@@ -41,9 +48,10 @@ const CharacterTable = (props) => {
 
 
 return(
-    <div>
-        <h3>Character Display</h3> 
+    <div className='tableContainer'>
+        <h3>Characters</h3> 
         <hr />
+            <div className='characters'>
             <Table striped>
                 <thead>
                     <tr>
@@ -55,12 +63,14 @@ return(
                         <th>Gender</th>
                         <th>Description</th>
                         <th>Background</th>
+                        <th>Image</th>
                     </tr>
                 </thead>
                 <tbody>
                     {characterMapper()}
                 </tbody>
             </Table>
+            </div>
     </div>
     );
 }
