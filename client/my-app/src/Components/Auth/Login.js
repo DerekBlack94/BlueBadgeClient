@@ -7,7 +7,7 @@ const Login = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch("http://localhost:3000/user/login", {
+        fetch("https://the-epic-character-creator.herokuapp.com/user/login", {
             method: 'POST',
             body: JSON.stringify({user:{username: username, password: password}}),
             headers: new Headers({
