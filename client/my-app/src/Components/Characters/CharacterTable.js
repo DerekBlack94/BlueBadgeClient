@@ -14,7 +14,7 @@ const CharacterTable = (props) => {
     }
 
     const characterMapper = () => {
-        return props.characters.map((character, index) => {
+        props.characters ? props.characters.map((character, index) => {
             return(
             <tr key={index}>
                 <th scope='row'>{character.id}</th>
@@ -31,7 +31,7 @@ const CharacterTable = (props) => {
                 </td> 
             </tr>
             )
-        })
+        }) : <p>Loading...</p>
     }
 
 return(
