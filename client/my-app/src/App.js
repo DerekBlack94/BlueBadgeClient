@@ -3,8 +3,9 @@ import {useState, useEffect} from 'react';
 import Sitebar from './Components/Navbar/Navbar';
 import {Button} from 'reactstrap';
 // import 'bootstrap/dist/css/bootstrap.min.css'
-//import Auth from "./auth/Auth"
+import Auth from './Components/Auth/Auth'
 import CharacterIndex from './Components/Characters/CharacterIndex';
+import Landing from './Components/Landing/Landing';
 
 function App () {
   const [sessionToken, setSessionToken] = useState('');
@@ -26,17 +27,18 @@ function App () {
 
   //**need to have Auth set up before use */
 
-  /*const protectedViews = () => {
+  const protectedViews = () => {
     return (sessionToken === localStorage.getItem('token') ? <CharacterIndex token={sessionToken}/>
     : <Auth updateToken={updateToken}/> ) 
-  }*/
+  }
 
 
   return (
     <div>
       <Sitebar clickLogout={clearToken} />
       {/* {protectedViews()}  --> set up auth first */} 
-      <CharacterIndex token={sessionToken} />
+      {/* <CharacterIndex token={sessionToken} /> */}
+      <Landing />
     </div>
   );
 }
