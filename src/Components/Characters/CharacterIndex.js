@@ -3,6 +3,8 @@ import { Container, Row, Col} from 'reactstrap'
 import CharacterCreate from './CharacterCreate';
 import CharacterTable from './CharacterTable';
 import CharacterEdit from './CharacterEdit';
+import APIURL from '../../helpers/environment'
+
 
 const CharacterIndex = (props) => {
     const [characters, setCharacters] = useState([]);
@@ -10,7 +12,8 @@ const CharacterIndex = (props) => {
     const [characterToUpdate, setCharacterToUpdate] = useState({});
 
     const fetchCharacters = () => {
-        fetch('https://the-epic-character-creator.herokuapp.com/character/', {
+
+        fetch(`${APIURL}/character`, {
             method: 'GET',
             headers: new Headers ({
                 'Content-Type': 'application/json',
@@ -42,6 +45,7 @@ const CharacterIndex = (props) => {
         }, [])
 
 return(
+
     <div className='indexContainer'>
         <Container>
             <Row>
@@ -55,6 +59,7 @@ return(
                 <Col md="4">
                     <CharacterCreate fetchCharacters={fetchCharacters} token={props.token}/>
                 </Col>
+
 
                 {updateActive ? <CharacterEdit characterToUpdate={characterToUpdate}
                 updateOff={updateOff} token={props.token} fetchCharacters={fetchCharacters}/> : <></>}

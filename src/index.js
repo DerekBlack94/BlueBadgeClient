@@ -11,6 +11,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
+
     <div className='reactOverride'>
       <App />
     </div>
@@ -18,6 +19,7 @@ ReactDOM.render(
   </React.StrictMode>
   ,
   document.getElementById('root')
+
 );
 
 reportWebVitals();

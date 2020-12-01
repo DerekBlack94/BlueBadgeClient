@@ -22,6 +22,7 @@ import CharacterCreate from '../Characters/CharacterCreate';
 
 const Sitebar = (props) => {
     const [isOpen, setIsOpen] = useState(false);
+
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const toggle = () => setDropdownOpen(!dropdownOpen);
     const toggle2 = () => {
@@ -34,7 +35,9 @@ const Sitebar = (props) => {
         
     <div className='parent'>
 
+
         <Navbar light expand="md">
+
             {/* <NavbarBrand className="blue"  href="/"> EPIC CHARACTER CREATOR</NavbarBrand> */}
             
             <NavbarToggler onClick={toggle2}/>
@@ -44,7 +47,9 @@ const Sitebar = (props) => {
                     <NavLink className="blue" href="/">EPIC  CHARACTER CREATOR</NavLink>
                 </NavItem>
                     
+
                 {/* <div className='dropdown'>
+
                 <Router>
                     <div className='styling'>
                     <NavItem>
@@ -63,6 +68,7 @@ const Sitebar = (props) => {
                 </Router>
                 </div> */}
 
+
                     
                 <NavItem>
                     <NavLink className="invite" to="/invite">Invite Friends</NavLink>
@@ -70,11 +76,14 @@ const Sitebar = (props) => {
         
             </Nav>
 
+
             <div className='search'>
+
             <Form inline>
                 <Input type="text" placeholder="Search Character" className="mr-sm-2" />
                 <Button className="infoBtn" outline color="info">Search </Button>
             </Form>
+
             </div>
 
             <br/>
@@ -84,6 +93,7 @@ const Sitebar = (props) => {
         </Navbar>
     
         {/* <Router>
+
         <div className = 'navRoute'>
         <Switch>
             <Route exact path = '/characters'><CharacterTable /></Route>
@@ -91,6 +101,7 @@ const Sitebar = (props) => {
         </Switch>
         </div>
         </Router> */}
+
     </div>
     )
 }

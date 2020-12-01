@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import APIURL from '../../helpers/environment'
+
 
 const CharacterCreate = (props) => {
     const [project_name, setProject_Name] = useState('');
@@ -9,14 +11,17 @@ const CharacterCreate = (props) => {
     const [gender, setGender] = useState('');
     const [character_description, setCharacter_Description] = useState('');
     const [background, setBackground] = useState('');
+
     const [image, setImage] = useState({ preview: "", raw: "" });
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch('https://the-epic-character-creator.herokuapp.com/character/create', {
+        fetch(`${APIURL}/character/create`, {
             method: 'POST',
             body: JSON.stringify({ character : {
                 project_name: project_name, name: name, age: age, race: race, gender: gender, character_description: character_description, background: background, image: image
+
             }}),
             headers: new Headers ({
                 'Content-Type': 'application/json',
@@ -36,6 +41,7 @@ const CharacterCreate = (props) => {
                 props.fetchCharacters();
             })
     }
+
 
     const handleChange = e => {
         if (e.target.files.length) {
@@ -156,6 +162,7 @@ const CharacterCreate = (props) => {
                 />
 
                 <Button onClick={handleUpload}>Upload Image</Button>
+
 
             </Form>
         </div>
