@@ -38,8 +38,8 @@ function App () {
     
       <Sitebar clickLogout={clearToken}/>
       <Auth updateToken={updateToken}/>
-      {/* {protectedViews()}  --> set up auth first */} 
-      <CharacterIndex token={sessionToken} />
+      {protectedViews()} 
+      {/* <CharacterIndex token={sessionToken} /> */}
       <Landing />
     </div>
   );
