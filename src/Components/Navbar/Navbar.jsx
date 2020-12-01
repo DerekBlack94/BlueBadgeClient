@@ -23,13 +23,24 @@ import CharacterCreate from '../Characters/CharacterCreate';
 const Sitebar = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+
     const toggle = () => setDropdownOpen(!dropdownOpen);
+
     const toggle2 = () => {
         setIsOpen(!isOpen);
 
         let newIsOpen = !isOpen;
         setIsOpen(newIsOpen);
     }
+
+    const toggleSearch = () => {
+        (props.sessionToken === localStorage.getItem('token') ? 
+        <Form inline>
+            <Input type="text" placeholder="Search Character" className="mr-sm-2" />
+            <Button className="infoBtn" outline color="info">Search </Button>
+        </Form> : <div></div>)
+    }
+
     return(
         
     <div className='parent'>
@@ -71,10 +82,11 @@ const Sitebar = (props) => {
             </Nav>
 
             <div className='search'>
-            <Form inline>
-                <Input type="text" placeholder="Search Character" className="mr-sm-2" />
-                <Button className="infoBtn" outline color="info">Search </Button>
-            </Form>
+                {/* <Form inline>
+                    <Input type="text" placeholder="Search Character" className="mr-sm-2" />
+                    <Button className="infoBtn" outline color="info">Search </Button>
+                </Form> */}
+                {toggleSearch()}
             </div>
 
             <br/>

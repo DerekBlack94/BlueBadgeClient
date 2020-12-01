@@ -39,7 +39,7 @@ function App () {
   return (
     <div>
     
-      <Sitebar clickLogout={clearToken}/>
+      <Sitebar clickLogout={clearToken} sessonToken={sessionToken} />
       {/* <Auth updateToken={updateToken}/> */}
       {protectedViews()} 
       {/* <CharacterIndex token={sessionToken} /> */}
