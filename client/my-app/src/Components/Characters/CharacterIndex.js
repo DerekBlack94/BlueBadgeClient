@@ -37,9 +37,9 @@ const CharacterIndex = (props) => {
         setUpdateActive(false);
     }
 
-    /*useEffect(() => {
-            fetchCharacters();
-        }, [])*/
+    // useEffect(() => {
+    //         fetchCharacters();
+    //     }, [])
 
 return(
     <div>
