@@ -2,9 +2,10 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import Sitebar from './Components/Navbar/Navbar';
 import {Button} from 'reactstrap';
+// import 'bootstrap/dist/css/bootstrap.min.css'
+import Auth from './Components/Auth/Auth'
 import CharacterIndex from './Components/Characters/CharacterIndex';
-import Auth from "./Components/Auth/Auth";
-
+import Landing from './Components/Landing/Landing';
 
 function App () {
   const [sessionToken, setSessionToken] = useState('');
@@ -39,7 +40,7 @@ function App () {
       <Auth updateToken={updateToken}/>
       {protectedViews()}  
       <CharacterIndex token={sessionToken} />
-
+      <Landing />
     </div>
   );
 }

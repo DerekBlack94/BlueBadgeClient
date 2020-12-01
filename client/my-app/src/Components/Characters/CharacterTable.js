@@ -1,5 +1,7 @@
- import React from 'react';
- import {Table, Button} from 'reactstrap';
+
+import React from 'react';
+import {Table, Button} from 'reactstrap';
+
 
 const CharacterTable = (props) => {
     const deleteCharacter = ( character ) => {
@@ -14,7 +16,8 @@ const CharacterTable = (props) => {
     }
 
     const characterMapper = () => {
-        return props.characters.map((character, index) => {
+        props.characters ? props.characters.map((character, index) => {
+            return(
             <tr key={index}>
                 <th scope='row'>{character.id}</th>
                 <td>{character.project_name}</td>
@@ -29,7 +32,8 @@ const CharacterTable = (props) => {
                     <Button color='danger' onClick={() => {deleteCharacter(character)}}>Delete</Button>
                 </td> 
             </tr>
-        })
+            )
+        }) : <p>Loading...</p>
     }
 
 

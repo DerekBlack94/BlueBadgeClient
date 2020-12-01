@@ -41,6 +41,7 @@ const CharacterIndex = (props) => {
             fetchCharacters();
         }, [])
 
+
 return(
     <div>
         <Container>
