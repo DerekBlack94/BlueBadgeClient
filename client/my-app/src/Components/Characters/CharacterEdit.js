@@ -12,7 +12,7 @@ const CharacterEdit = (props) => {
 
     const characterUpdate = (event, character) => {
         event.preventDefault();
-        fetch(`https://the-epic-character-creator.herokuapp.com/character/${props.characterToUpdate.id}`, {
+        fetch(`${APIURL}/character${props.characterToUpdate.id}`, {
             method: 'PUT',
             body: JSON.stringify({character: {
                 project_name: editPN, name: editName, age: editAge, race: editRace, gender: editGender, character_description: editCD, background: editBG

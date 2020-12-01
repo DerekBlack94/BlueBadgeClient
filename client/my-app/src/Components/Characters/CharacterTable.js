@@ -3,7 +3,7 @@
 
 const CharacterTable = (props) => {
     const deleteCharacter = ( character ) => {
-        fetch(`https://the-epic-character-creator.herokuapp.com/character/${character.id}`, {
+        fetch(`${APIURL}/character${character.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'appliction/json',

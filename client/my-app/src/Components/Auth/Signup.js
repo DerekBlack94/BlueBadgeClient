@@ -11,7 +11,7 @@ const Signup = (props) => {
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch("https://the-epic-character-creator.herokuapp.com/user/create", {
+        fetch(`${APIURL}/user/create`, {
             method: 'POST',
             body: JSON.stringify({user:{firstName: firstName, lastName: lastName, username: username, password: password}}),
             headers: new Headers({

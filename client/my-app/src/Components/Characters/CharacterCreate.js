@@ -12,7 +12,7 @@ const CharacterCreate = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch('https://the-epic-character-creator.herokuapp.com/character/create', {
+        fetch(`${APIURL}/character/create`, {
             method: 'POST',
             body: JSON.stringify({ character : {
                 project_name: project_name, name: name, age: age, race: race, gender: gender, character_description: character_description, background: background

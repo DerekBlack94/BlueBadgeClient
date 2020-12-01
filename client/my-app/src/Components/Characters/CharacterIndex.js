@@ -10,7 +10,7 @@ const CharacterIndex = (props) => {
     const [characterToUpdate, setCharacterToUpdate] = useState({});
 
     const fetchCharacters = () => {
-        fetch('https://the-epic-character-creator.herokuapp.com/character/', {
+        fetch(`${APIURL}/character`, {
             method: 'GET',
             headers: new Headers ({
                 'Content-Type': 'application/json',
