@@ -18,7 +18,7 @@ function App () {
   const updateToken = (newToken) => {
     localStorage.setItem('token', newToken);
     setSessionToken(newToken);
-    console.log(sessionToken)
+    console.log(sessionToken);
   }
   const clearToken = () => {
     localStorage.clear();
@@ -35,9 +35,11 @@ function App () {
 
   return (
     <div>
-      <Sitebar clickLogout={clearToken} />
+    
+      <Sitebar clickLogout={clearToken}/>
+      <Auth updateToken={updateToken}/>
       {/* {protectedViews()}  --> set up auth first */} 
-      {/* <CharacterIndex token={sessionToken} /> */}
+      <CharacterIndex token={sessionToken} />
       <Landing />
     </div>
   );
