@@ -21,11 +21,9 @@ const Signup = (props) => {
             headers: new Headers({
                 'Content-Type': 'application/json'
             })
-        }).then(
-            (response) => response.json()
-        ).then((data) => {
-            props.updateToken(data.sessionToken)
         })
+        .then((response) => response.json())
+        .then((data) => {props.updateToken(data.sessionToken)})
     }
 
     return(
