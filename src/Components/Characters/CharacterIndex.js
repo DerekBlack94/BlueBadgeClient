@@ -13,7 +13,7 @@ const CharacterIndex = (props) => {
 
     const fetchCharacters = () => {
 
-        fetch(`${APIURL}/character/`, {
+        fetch(`${APIURL}/character`, {
             method: 'GET',
             headers: new Headers ({
                 'Content-Type': 'application/json',
