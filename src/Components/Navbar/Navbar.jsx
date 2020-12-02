@@ -21,26 +21,26 @@ import CharacterCreate from '../Characters/CharacterCreate';
 
 
 const Sitebar = (props) => {
-    const [isOpen, setIsOpen] = useState(false);
+    // const [isOpen, setIsOpen] = useState(false);
 
-    const [dropdownOpen, setDropdownOpen] = useState(false);
+    // const [dropdownOpen, setDropdownOpen] = useState(false);
 
-    const toggle = () => setDropdownOpen(!dropdownOpen);
+    // const toggle = () => setDropdownOpen(!dropdownOpen);
 
-    const toggle2 = () => {
-        setIsOpen(!isOpen);
+    // const toggle2 = () => {
+    //     setIsOpen(!isOpen);
 
-        let newIsOpen = !isOpen;
-        setIsOpen(newIsOpen);
-    }
+    //     let newIsOpen = !isOpen;
+    //     setIsOpen(newIsOpen);
+    // }
 
-    const toggleSearch = () => {
-        (props.sessionToken === localStorage.getItem('token') ? 
-        <Form inline>
-            <Input type="text" placeholder="Search Character" className="mr-sm-2" />
-            <Button className="infoBtn" outline color="info">Search </Button>
-        </Form> : <div></div>)
-    }
+    // const toggleSearch = () => {
+    //     (props.sessionToken === localStorage.getItem('token') ? 
+    //     <Form inline>
+    //         <Input type="text" placeholder="Search Character" className="mr-sm-2" />
+    //         <Button className="infoBtn" outline color="info">Search </Button>
+    //     </Form> : <div></div>)
+    // }
 
     return(
         
@@ -51,8 +51,8 @@ const Sitebar = (props) => {
 
             {/* <NavbarBrand className="blue"  href="/"> EPIC CHARACTER CREATOR</NavbarBrand> */}
             
-            <NavbarToggler onClick={toggle2}/>
-            <Collapse isOpen={isOpen} navbar>
+            {/* <NavbarToggler onClick={toggle2}/>
+            <Collapse isOpen={isOpen} navbar> */}
             <Nav className="mr-auto" >
                 <NavItem>
                     <NavLink className="blue" href="/">EPIC  CHARACTER CREATOR</NavLink>
@@ -89,17 +89,17 @@ const Sitebar = (props) => {
 
 
             <div className='search'>
-                {/* <Form inline>
+                <Form inline>
                     <Input type="text" placeholder="Search Character" className="mr-sm-2" />
                     <Button className="infoBtn" outline color="info">Search </Button>
-                </Form> */}
-                {toggleSearch()}
+                </Form>
+                {/* {toggleSearch()} */}
             </div>
 
             <br/>
                 
             <Button className="logoutBtn" size="lg"  onClick={props.clickLogout}>Logout</Button>
-            </Collapse>
+            {/* </Collapse> */}
         </Navbar>
     
         {/* <Router>

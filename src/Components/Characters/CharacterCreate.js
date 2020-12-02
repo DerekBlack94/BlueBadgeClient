@@ -12,7 +12,7 @@ const CharacterCreate = (props) => {
     const [character_description, setCharacter_Description] = useState('');
     const [background, setBackground] = useState('');
 
-    const [image, setImage] = useState({ preview: "", raw: "" });
+    // const [image, setImage] = useState({ preview: "", raw: "" });
 
 
     const handleSubmit = (event) => {
@@ -116,7 +116,7 @@ const CharacterCreate = (props) => {
                     <Label htmlFor='gender'>Gender:</Label>
                     <br />
                     <Input type='select' name='gender' value={gender} onChange={(e) => setGender(e.target.value.toString())}>
-                        <option value='null'>Please pick a Gendr</option>
+                        <option value='null'>Please pick a Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Nonbinary">Nonbinary</option>
