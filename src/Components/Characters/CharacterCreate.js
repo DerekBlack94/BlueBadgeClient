@@ -57,7 +57,7 @@ const CharacterCreate = (props) => {
         const formData = new FormData();
         formData.append("image", image.raw);
 
-        await fetch(`${APIURL}/character/create`, {
+        await fetch(`${APIURL}/character`, {
             method: "POST",
             headers: {
                 "Content-Type": "multipart/form-data"
