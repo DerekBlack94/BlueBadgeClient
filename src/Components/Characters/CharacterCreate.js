@@ -12,7 +12,7 @@ const CharacterCreate = (props) => {
     const [character_description, setCharacter_Description] = useState('');
     const [background, setBackground] = useState('');
 
-    const [image, setImage] = useState({ preview: "", raw: "" });
+    // const [image, setImage] = useState({ preview: "", raw: "" });
 
 
     const handleSubmit = (event) => {
@@ -20,7 +20,7 @@ const CharacterCreate = (props) => {
         fetch(`${APIURL}/character/create`, {
             method: 'POST',
             body: JSON.stringify({ character : {
-                project_name: project_name, name: name, age: age, race: race, gender: gender, character_description: character_description, background: background, image: image
+                project_name: project_name, name: name, age: age, race: race, gender: gender, character_description: character_description, background: background, /*image: image*/
 
             }}),
             headers: new Headers ({
@@ -43,28 +43,28 @@ const CharacterCreate = (props) => {
     }
 
 
-    const handleChange = e => {
-        if (e.target.files.length) {
-            setImage({
-            preview: URL.createObjectURL(e.target.files[0]),
-            raw: e.target.files[0]
-            });
-        }
-    };
+    // const handleChange = e => {
+    //     if (e.target.files.length) {
+    //         setImage({
+    //         preview: URL.createObjectURL(e.target.files[0]),
+    //         raw: e.target.files[0]
+    //         });
+    //     }
+    // };
 
-    const handleUpload = async e => {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append("image", image.raw);
+    // const handleUpload = async e => {
+    //     e.preventDefault();
+    //     const formData = new FormData();
+    //     formData.append("image", image.raw);
 
-        await fetch(`${APIURL}/character`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "multipart/form-data"
-            },
-            body: formData
-        });
-    };
+    //     await fetch(`${APIURL}/character`, {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "multipart/form-data"
+    //         },
+    //         body: formData
+    //     });
+    // };
 
     return (
         <div className='createContainer'>
@@ -143,7 +143,7 @@ const CharacterCreate = (props) => {
                 <br />
                 
                 <Button type='submit' onSubmit={handleSubmit}>Create</Button>
-
+{/* 
                 <label htmlFor="upload-button">
                     {image.preview ? (
                         <img src={image.preview} alt="dummy" width="300" height="300" />
@@ -161,9 +161,9 @@ const CharacterCreate = (props) => {
                     id="upload-button"
                     style={{ display: "none" }}
                     onChange={handleChange}
-                />
+                /> */}
 
-                <Button onClick={handleUpload}>Upload Image</Button>
+                {/* <Button onClick={handleUpload}>Upload Image</Button> */}
 
 
             </Form>
