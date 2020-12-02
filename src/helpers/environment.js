@@ -8,6 +8,6 @@ switch (window.location.hostname) {
 
     case "edk-character-creator-client.herokuapp.com/":
 
-        APIURL = 'https://edk-character-creator-client.herokuapp.com/'
+        APIURL = 'https://edk-character-creator-client.herokuapp.com'
 }
 export default APIURL;
