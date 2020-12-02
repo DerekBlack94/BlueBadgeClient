@@ -17,9 +17,9 @@ const Login = (props) => {
             headers: new Headers({
                 'Content-Type': 'application/json'
             })
-        }).then(
-            (response) => response.json()
-        ).then((data) => {
+        })
+        .then((response) => response.json())
+        .then((data) => {
             props.updateToken(data.sessionToken)
         })
     }
