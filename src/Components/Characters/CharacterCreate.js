@@ -57,7 +57,7 @@ const CharacterCreate = (props) => {
         const formData = new FormData();
         formData.append("image", image.raw);
 
-        await fetch('https://the-epic-character-creator.herokuapp.com/character/', {
+        await fetch(`${APIURL}`, {
             method: "POST",
             headers: {
                 "Content-Type": "multipart/form-data"
