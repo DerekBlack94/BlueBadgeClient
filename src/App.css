@@ -48,22 +48,24 @@ hr {
 
 .editBtn {
   background-color: #955E42;
+  border: 1px solid #955E42;
   color: white;
 }
 
 .editBtn:hover {
-  border: 2px solid #352343;
+  border: 1px solid #352343;
   background-color: #955E42;
   color: white
 }
 
 .deleteBtn {
+  border: 1px solid #352343;
   background-color: #352343;
   color: white;
 }
 
 .deleteBtn:hover {
-  border: 2px solid #955E42;
+  border: 1px solid #955E42;
   background-color: #352343;
   color: white;
 }
