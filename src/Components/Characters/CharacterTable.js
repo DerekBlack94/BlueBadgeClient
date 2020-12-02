@@ -17,7 +17,7 @@ const CharacterTable = (props) => {
 
 
     const characterMapper = () => {
-        props.characters ? props.characters.map((character, index) => {
+        return props.characters.map((character, index) => {
             // const imageViewer = () => {
             //     character.image != null ? <a href={character.image} target='blank'>Click to View</a> : <div></div>
             // }
@@ -40,7 +40,7 @@ const CharacterTable = (props) => {
                 </td> 
             </tr>
             )
-        }) : <p>Loading...</p>
+        })
 
     }
 
