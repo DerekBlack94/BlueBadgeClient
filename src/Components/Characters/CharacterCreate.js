@@ -33,7 +33,7 @@ const CharacterCreate = (props) => {
                 console.log(json);
                 setProject_Name('');
                 setName('');
-                setAge();
+                setAge('');
                 setRace('');
                 setGender('');
                 setCharacter_Description('');
@@ -97,14 +97,15 @@ const CharacterCreate = (props) => {
                 <FormGroup>
                     <Label htmlFor='race'>Race:</Label>
                     <br />
-                    <Input type='select' name='race' value={race} onChange={(e) => setRace(e.target.value)}>
+                    <Input type='select' name='race' value={race} onChange={(e) => setRace(e.target.value.toString())}>
+                        <option value='null'>Please pick a Race</option>
                         <option value="Human">Human</option>
-                        <option value="HighElf">High Elf</option>
-                        <option value="DarkElf">Dark Elf</option>
-                        <option value="WoodElf">Wood Elf</option>
+                        <option value="High Elf">High Elf</option>
+                        <option value="Dark Elf">Dark Elf</option>
+                        <option value="Wood Elf">Wood Elf</option>
                         <option value="Dwarf">Dwarf</option>
                         <option value="Tiefling">Tiefling</option>
-                        <option value="HalfOrc">Half Orc</option>
+                        <option value="Half Orc">Half Orc</option>
                         <option value="Hobbit">Hobbit</option>
                     </Input>
                 </FormGroup>
@@ -114,7 +115,8 @@ const CharacterCreate = (props) => {
                 <FormGroup>
                     <Label htmlFor='gender'>Gender:</Label>
                     <br />
-                    <Input type='select' name='gender' value={gender} onChange={(e) => setGender(e.target.value)}>
+                    <Input type='select' name='gender' value={gender} onChange={(e) => setGender(e.target.value.toString())}>
+                        <option value='null'>Please pick a Gendr</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Nonbinary">Nonbinary</option>
