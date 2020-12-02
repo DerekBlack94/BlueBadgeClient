@@ -1,7 +1,7 @@
 
- import React from 'react';
- import {Table, Button} from 'reactstrap';
- import APIURL from '../../helpers/environment'
+import React from 'react';
+import {Table, Button} from 'reactstrap';
+import APIURL from '../../helpers/environment'
 
 const CharacterTable = (props) => {
     const deleteCharacter = ( character ) => {
@@ -35,8 +35,8 @@ const CharacterTable = (props) => {
                 {/* <td>{imageViewer()}</td> */}
 
                 <td>
-                    <Button color='warning' onClick={() => {props.editUpdateCharacter(character); props.updateOn()}} >Edit</Button>
-                    <Button color='danger' onClick={() => {deleteCharacter(character)}}>Delete</Button>
+                    <Button className='editBtn' onClick={() => {props.editUpdateCharacter(character); props.updateOn()}} >Edit</Button>
+                    <Button className='deleteBtn' onClick={() => {deleteCharacter(character)}}>Delete</Button>
                 </td> 
             </tr>
             )

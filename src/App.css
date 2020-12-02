@@ -39,8 +39,24 @@ body {
   color: #FEF9EC;
 }
 
-
-
 hr {
   color: black;
+}
+
+.editBtn {
+  background-color: #955E42;
+  color: white;
+}
+
+.editBtn:hover {
+  border: 2px solid #352343;
+}
+
+.deleteBtn {
+  background-color: #352343;
+  color: white;
+}
+
+.deleteBtn:hover {
+  border: 2px solid #955E42;
 }
