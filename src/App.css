@@ -12,6 +12,7 @@ body {
 }
 
 .tableContainer {
+  width: 80vw;
   background-color: #FBE7B1;
   color: black;
   border: 5px solid #955E42;
@@ -20,6 +21,8 @@ body {
 }
 
 .createContainer {
+  margin-top: 30px;
+  width: 80vw;
   background-color: #FBE7B1;
   color: black;
   border: 5px solid #955E42;
@@ -50,6 +53,8 @@ hr {
 
 .editBtn:hover {
   border: 2px solid #352343;
+  background-color: #955E42;
+  color: white
 }
 
 .deleteBtn {
@@ -59,4 +64,6 @@ hr {
 
 .deleteBtn:hover {
   border: 2px solid #955E42;
+  background-color: #352343;
+  color: white;
 }
