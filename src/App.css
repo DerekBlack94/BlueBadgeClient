@@ -2,6 +2,7 @@
 body {
   background-color: #352343;
   font-family: 'Texturina';
+  padding-bottom: 30px;
 }
 
 .indexContainer {
@@ -81,4 +82,5 @@ hr {
   border: 2px solid rgb(105, 21, 21);
   font-size: 1em;
   text-align: center;
+  margin-top: 5px;
 }
