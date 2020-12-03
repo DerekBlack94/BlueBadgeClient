@@ -1,4 +1,4 @@
-let APIURL ="";
+let APIURL =""
 
 switch (window.location.hostname) {
     case "localhost" || '127.0.0.1':
@@ -6,7 +6,7 @@ switch (window.location.hostname) {
     APIURL = 'http://localhost:5432';
     break;
 
-    case "edk-character-creator-client.herokuapp.com/":
+    case "edk-character-creator-client.herokuapp.com":
 
         APIURL = 'https://edk-character-creator.herokuapp.com'
 }

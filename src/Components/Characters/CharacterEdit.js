@@ -15,7 +15,7 @@ const CharacterEdit = (props) => {
     const characterUpdate = (event, character) => {
         event.preventDefault();
 
-        fetch(`${APIURL}/character${props.characterToUpdate.id}`, {
+        fetch(`${APIURL}/character/${props.characterToUpdate.id}`, {
 
             method: 'PUT',
             body: JSON.stringify({character: {
