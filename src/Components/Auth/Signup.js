@@ -49,8 +49,6 @@ const Signup = (props) => {
     return(
         <div>
             <h1>Sign Up</h1>
-            {signupErrors && (<div>{signupErrors}</div>)}
-
 
             <Form onSubmit={handleSubmit}>
                 <FormGroup>
@@ -64,6 +62,7 @@ const Signup = (props) => {
                 <FormGroup>
                     <Label htmlFor="username">Username</Label>
                     <Input onChange={(e) => setUsername(e.target.value)} name="username" value={username}/>
+                    {signupErrors && (<div className='signupErrors'>{signupErrors}</div>)}
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="password">Password</Label>
