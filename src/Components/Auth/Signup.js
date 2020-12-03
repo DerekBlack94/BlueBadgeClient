@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
-import APIURL from '../../helpers/environment'
-
-
+// import APIURL from '../../helpers/environment'
 
 
 const Signup = (props) => {
@@ -10,25 +8,37 @@ const Signup = (props) => {
     const [password, setPassword] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [signupErrors, setSignupErrors] = useState('');
     
-    const handleSubmit = (event) => {
-        event.preventDefault();
 
-        fetch(`${APIURL}/user/create`, {
+    const handleSubmit = async (event) => {
+		event.preventDefault();
+		// front end error handling goes here
+		try {
+			const response = await fetch(`${APIURL}/user/create`, {
 
-            method: 'POST',
-            body: JSON.stringify({user:{firstName: firstName, lastName: lastName, username: username, password: password}}),
-            headers: new Headers({
-                'Content-Type': 'application/json'
-            })
-        })
-        .then((response) => response.json())
-        .then((data) => {props.updateToken(data.sessionToken)})
-    }
+				method: 'POST',
+				body: JSON.stringify({user:{firstName: firstName, lastName: lastName, username: username, password: password}}),
+				headers: new Headers({
+					'Content-Type': 'application/json'
+				})
+            });
+            console.log(response);
+            const data = await response.json();
+            console.log(data);
+            if (response.status === 500) {
+                setSignupErrors(data.error.errors.map((error) => error.message).join("\n"))
+            }
+			props.updateToken(data.sessionToken);
+		} catch (err) {
+			console.log(err)
+		}
+	}
 
     return(
         <div>
             <h1>Sign Up</h1>
+            {signupErrors && (<div>{signupErrors}</div>)}
             <Form onSubmit={handleSubmit}>
                 <FormGroup>
                     <Label htmlFor="firstName">First Name</Label>
