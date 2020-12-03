@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
-// import APIURL from '../../helpers/environment'
+import APIURL from '../../helpers/environment'
 
 
 const Signup = (props) => {
@@ -11,8 +11,19 @@ const Signup = (props) => {
     const [signupErrors, setSignupErrors] = useState('');
     
     const handleSubmit = async (event) => {
-		event.preventDefault();
-		// front end error handling goes here
+        event.preventDefault();
+        
+        if (username.length < 5 || /^[a-zA-Z]+$/.test(username) ) {
+            setSignupErrors('username must contain at least 5 characters AND 1 special character/number!');
+            return;
+        } 
+        if (password.length < 6) {
+            setSignupErrors('password must contain at least 5 characters!');
+            return;
+        }
+        
+
+        
 		try {
 			const response = await fetch('http://localhost:3000/user/create', {
 
@@ -38,6 +49,8 @@ const Signup = (props) => {
         <div>
             <h1>Sign Up</h1>
             {signupErrors && (<div>{signupErrors}</div>)}
+
+
             <Form onSubmit={handleSubmit}>
                 <FormGroup>
                     <Label htmlFor="firstName">First Name</Label>
