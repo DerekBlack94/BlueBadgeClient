@@ -47,7 +47,7 @@ hr {
 }
 
 .editBtn {
-  margin-top: 10px;
+  margin-top: 3px;
   margin-right: 5px;
   width: 75px;
   background-color: #955E42;
@@ -62,7 +62,7 @@ hr {
 }
 
 .deleteBtn {
-  margin-top: 10px;
+  margin-top: 3px;
   margin-right: 5px;
   width: 75px;
   border: 1px solid #352343;
