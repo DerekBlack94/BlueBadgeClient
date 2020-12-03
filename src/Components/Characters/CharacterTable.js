@@ -6,7 +6,7 @@ import APIURL from '../../helpers/environment'
 const CharacterTable = (props) => {
 
     const deleteCharacter = ( character ) => {
-        fetch(`${APIURL}/character${character.id}`, {
+        fetch(`${APIURL}/character/${character.id}`, {
 
 
             method: 'DELETE',
