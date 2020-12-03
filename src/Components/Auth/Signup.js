@@ -10,6 +10,7 @@ const Signup = (props) => {
     const [lastName, setLastName] = useState('');
     const [signupErrors, setSignupErrors] = useState('');
     
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         
@@ -25,7 +26,7 @@ const Signup = (props) => {
 
         
 		try {
-			const response = await fetch('http://localhost:3000/user/create', {
+			const response = await fetch(`${APIURL}/user/create`, {
 
 				method: 'POST',
 				body: JSON.stringify({user:{firstName: firstName, lastName: lastName, username: username, password: password}}),

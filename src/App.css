@@ -12,6 +12,7 @@ body {
 }
 
 .tableContainer {
+  width: 80vw;
   background-color: #FBE7B1;
   color: black;
   border: 5px solid #955E42;
@@ -20,6 +21,8 @@ body {
 }
 
 .createContainer {
+  margin-top: 30px;
+  width: 80vw;
   background-color: #FBE7B1;
   color: black;
   border: 5px solid #955E42;
@@ -39,8 +42,36 @@ body {
   color: #FEF9EC;
 }
 
-
-
 hr {
   color: black;
+}
+
+.editBtn {
+  margin-top: 10px;
+  margin-right: 5px;
+  width: 75px;
+  background-color: #955E42;
+  border: 1px solid #955E42;
+  color: white;
+}
+
+.editBtn:hover {
+  border: 1px solid #352343;
+  background-color: #955E42;
+  color: white
+}
+
+.deleteBtn {
+  margin-top: 10px;
+  margin-right: 5px;
+  width: 75px;
+  border: 1px solid #352343;
+  background-color: #352343;
+  color: white;
+}
+
+.deleteBtn:hover {
+  border: 1px solid #955E42;
+  background-color: #352343;
+  color: white;
 }

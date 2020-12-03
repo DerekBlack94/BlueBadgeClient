@@ -12,7 +12,7 @@ const CharacterCreate = (props) => {
     const [character_description, setCharacter_Description] = useState('');
     const [background, setBackground] = useState('');
 
-    const [image, setImage] = useState({ preview: "", raw: "" });
+    // const [image, setImage] = useState({ preview: "", raw: "" });
 
 
     const handleSubmit = (event) => {
@@ -20,7 +20,7 @@ const CharacterCreate = (props) => {
         fetch(`${APIURL}/character/create`, {
             method: 'POST',
             body: JSON.stringify({ character : {
-                project_name: project_name, name: name, age: age, race: race, gender: gender, character_description: character_description, background: background, image: image
+                project_name: project_name, name: name, age: age, race: race, gender: gender, character_description: character_description, background: background, /*image: image*/
 
             }}),
             headers: new Headers ({
@@ -33,7 +33,7 @@ const CharacterCreate = (props) => {
                 console.log(json);
                 setProject_Name('');
                 setName('');
-                setAge();
+                setAge('');
                 setRace('');
                 setGender('');
                 setCharacter_Description('');
@@ -43,28 +43,28 @@ const CharacterCreate = (props) => {
     }
 
 
-    const handleChange = e => {
-        if (e.target.files.length) {
-            setImage({
-            preview: URL.createObjectURL(e.target.files[0]),
-            raw: e.target.files[0]
-            });
-        }
-    };
+    // const handleChange = e => {
+    //     if (e.target.files.length) {
+    //         setImage({
+    //         preview: URL.createObjectURL(e.target.files[0]),
+    //         raw: e.target.files[0]
+    //         });
+    //     }
+    // };
 
-    const handleUpload = async e => {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append("image", image.raw);
+    // const handleUpload = async e => {
+    //     e.preventDefault();
+    //     const formData = new FormData();
+    //     formData.append("image", image.raw);
 
-        await fetch('https://the-epic-character-creator.herokuapp.com/character/', {
-            method: "POST",
-            headers: {
-                "Content-Type": "multipart/form-data"
-            },
-            body: formData
-        });
-    };
+    //     await fetch(`${APIURL}/character`, {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "multipart/form-data"
+    //         },
+    //         body: formData
+    //     });
+    // };
 
     return (
         <div className='createContainer'>
@@ -97,14 +97,15 @@ const CharacterCreate = (props) => {
                 <FormGroup>
                     <Label htmlFor='race'>Race:</Label>
                     <br />
-                    <Input type='select' name='race' value={race} onChange={(e) => setRace(e.target.value)}>
+                    <Input type='select' name='race' value={race} onChange={(e) => setRace(e.target.value.toString())}>
+                        <option value='null'>Please pick a Race</option>
                         <option value="Human">Human</option>
-                        <option value="HighElf">High Elf</option>
-                        <option value="DarkElf">Dark Elf</option>
-                        <option value="WoodElf">Wood Elf</option>
+                        <option value="High Elf">High Elf</option>
+                        <option value="Dark Elf">Dark Elf</option>
+                        <option value="Wood Elf">Wood Elf</option>
                         <option value="Dwarf">Dwarf</option>
                         <option value="Tiefling">Tiefling</option>
-                        <option value="HalfOrc">Half Orc</option>
+                        <option value="Half Orc">Half Orc</option>
                         <option value="Hobbit">Hobbit</option>
                     </Input>
                 </FormGroup>
@@ -114,7 +115,8 @@ const CharacterCreate = (props) => {
                 <FormGroup>
                     <Label htmlFor='gender'>Gender:</Label>
                     <br />
-                    <Input type='select' name='gender' value={gender} onChange={(e) => setGender(e.target.value)}>
+                    <Input type='select' name='gender' value={gender} onChange={(e) => setGender(e.target.value.toString())}>
+                        <option value='null'>Please pick a Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Nonbinary">Nonbinary</option>
@@ -141,7 +143,7 @@ const CharacterCreate = (props) => {
                 <br />
                 
                 <Button type='submit' onSubmit={handleSubmit}>Create</Button>
-
+{/* 
                 <label htmlFor="upload-button">
                     {image.preview ? (
                         <img src={image.preview} alt="dummy" width="300" height="300" />
@@ -159,9 +161,9 @@ const CharacterCreate = (props) => {
                     id="upload-button"
                     style={{ display: "none" }}
                     onChange={handleChange}
-                />
+                /> */}
 
-                <Button onClick={handleUpload}>Upload Image</Button>
+                {/* <Button onClick={handleUpload}>Upload Image</Button> */}
 
 
             </Form>

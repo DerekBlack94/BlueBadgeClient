@@ -1,26 +1,26 @@
 
- import React from 'react';
- import {Table, Button} from 'reactstrap';
- import APIURL from '../../helpers/environment'
+import React from 'react';
+import {Table, Button} from 'reactstrap';
+import APIURL from '../../helpers/environment'
 
 const CharacterTable = (props) => {
-    const deleteCharacter = ( character ) => {
-        fetch(`${APIURL}/character${character.id}`, {
+    const deleteCharacter = (character) => {
+        fetch(`${APIURL}/character/${character.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'appliction/json',
                 'Authorization': props.token
             })
         })
-        .then(() => props.fetchCharacter())
+        .then(() => props.fetchCharacters())
     }
 
 
     const characterMapper = () => {
-        props.characters ? props.characters.map((character, index) => {
-            const imageViewer = () => {
-                character.image != null ? <a href={character.image} target='blank'>Click to View</a> : <div></div>
-            }
+        return props.characters.map((character, index) => {
+            // const imageViewer = () => {
+            //     character.image != null ? <a href={character.image} target='blank'>Click to View</a> : <div></div>
+            // }
 
             return(
             <tr key={index}>
@@ -32,15 +32,15 @@ const CharacterTable = (props) => {
                 <td>{character.gender}</td>
                 <td>{character.character_description}</td>
                 <td>{character.background}</td>
-                <td>{imageViewer()}</td>
+                {/* <td>{imageViewer()}</td> */}
 
                 <td>
-                    <Button color='warning' onClick={() => {props.editUpdateCharacter(character); props.updateOn()}} >Edit</Button>
-                    <Button color='danger' onClick={() => {deleteCharacter(character)}}>Delete</Button>
+                    <Button className='editBtn' onClick={() => {props.editUpdateCharacter(character); props.updateOn()}} >Edit</Button>
+                    <Button className='deleteBtn' onClick={() => {deleteCharacter(character)}}>Delete</Button>
                 </td> 
             </tr>
             )
-        }) : <p>Loading...</p>
+        })
 
     }
 
@@ -65,7 +65,7 @@ return(
                         <th>Gender</th>
                         <th>Description</th>
                         <th>Background</th>
-                        <th>Image</th>
+                        {/* <th>Image</th> */}
 
                     </tr>
                 </thead>
