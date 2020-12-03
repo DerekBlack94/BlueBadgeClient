@@ -15,11 +15,11 @@ const Signup = (props) => {
         event.preventDefault();
         
         if (username.length < 5 || /^[a-zA-Z]+$/.test(username) ) {
-            setSignupErrors('username must contain at least 5 characters AND 1 special character/number!');
+            setSignupErrors('Username must contain at least five characters AND one special character OR number!');
             return;
         } 
         if (password.length < 6) {
-            setSignupErrors('password must contain at least 5 characters!');
+            setSignupErrors('Password must contain at least 5 characters!');
             return;
         }
         
@@ -70,7 +70,7 @@ const Signup = (props) => {
                 </FormGroup>
 
                 {signupErrors && (<div className='signupErrors'>{signupErrors}</div>)}
-                
+
                 <Button className='signupBtn' type="submit">Signup</Button>
 
             </Form>
