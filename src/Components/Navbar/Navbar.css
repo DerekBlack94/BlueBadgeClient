@@ -40,9 +40,9 @@
     transition-timing-function: ease-in-out;
 }
 
-.invite:hover {
+/* .invite:hover {
     color: #955E42;
-}
+} */
 
 .logoutBtn{
     font-family: 'Texturina', serif;
@@ -69,4 +69,59 @@
 .parent {
     background-color: #4A315E;
 }
+.invitebtn{
+    
+    margin-top: 10%;
+   
+    margin-left: 10%;
+    border: solid #955E42;
+    font-family: 'Texturina', serif;
+    background-color: #FBE7B1;
+    color: black;
+}
+.invitebtn:hover {
+    background-color: #955E42;
+    color: white;
+}
+.textarea{
+    border: solid #955E42;
+    border-radius: 6px;
+    margin-left: 30%;
+}
+.invtForm{
+    background-color:#4A315E ;
+}
+.invModal{
+    border: solid 4px #955E42;
+    border-radius: 6px;
+
+}
+h3{
+    color: #FBE7B1 ;
+    margin-left: 30%;
+    margin-bottom: 20px;
+}
+.copyBtn{
+    border: solid #955E42;
+    font-family: 'Texturina', serif;
+    background-color: #FBE7B1;
+    color: black;
+    margin-left: 45%;
+    margin-bottom: 20px;
+    font-size: 22px;
+
+}
+.copyBtn:hover{
+    background-color: #955E42;
+    color: white;
+
+}
+.exitBtn{
+    border: solid #955E42;
+    font-family: 'Texturina', serif;
+    background-color: #FBE7B1;
+    color: black;
+
+}
+
 

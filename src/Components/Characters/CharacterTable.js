@@ -1,23 +1,30 @@
 
- import React from 'react';
- import {Table, Button} from 'reactstrap';
- import APIURL from '../../helpers/environment'
+import React from 'react';
+import {Table, Button} from 'reactstrap';
+import APIURL from '../../helpers/environment'
 
 const CharacterTable = (props) => {
+
     const deleteCharacter = ( character ) => {
         fetch(`http://localhost:3000/character${character.id}`, {
+
+
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'appliction/json',
                 'Authorization': props.token
             })
         })
-        .then(() => props.fetchCharacter())
+        .then(() => props.fetchCharacters())
     }
 
 
     const characterMapper = () => {
-        props.characters ? props.characters.map((character, index) => {
+
+      
+
+        return props.characters.map((character, index) => {
+
             // const imageViewer = () => {
             //     character.image != null ? <a href={character.image} target='blank'>Click to View</a> : <div></div>
             // }
@@ -35,12 +42,12 @@ const CharacterTable = (props) => {
                 {/* <td>{imageViewer()}</td> */}
 
                 <td>
-                    <Button color='warning' onClick={() => {props.editUpdateCharacter(character); props.updateOn()}} >Edit</Button>
-                    <Button color='danger' onClick={() => {deleteCharacter(character)}}>Delete</Button>
+                    <Button className='editBtn' onClick={() => {props.editUpdateCharacter(character); props.updateOn()}} >Edit</Button>
+                    <Button className='deleteBtn' onClick={() => {deleteCharacter(character)}}>Delete</Button>
                 </td> 
             </tr>
             )
-        }) : <p>Loading...</p>
+        })
 
     }
 

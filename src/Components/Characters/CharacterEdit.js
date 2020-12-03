@@ -15,7 +15,11 @@ const CharacterEdit = (props) => {
     const characterUpdate = (event, character) => {
         event.preventDefault();
 
+
         fetch(`http://localhost:3000/character${props.characterToUpdate.id}`, {
+
+       
+
 
             method: 'PUT',
             body: JSON.stringify({character: {

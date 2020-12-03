@@ -4,12 +4,14 @@ import CharacterCreate from './CharacterCreate';
 import CharacterTable from './CharacterTable';
 import CharacterEdit from './CharacterEdit';
 import APIURL from '../../helpers/environment'
+import { scryRenderedComponentsWithType } from 'react-dom/test-utils';
 
 
 const CharacterIndex = (props) => {
     const [characters, setCharacters] = useState([]);
     const [updateActive, setUpdateActive] = useState(false);
     const [characterToUpdate, setCharacterToUpdate] = useState({});
+    const [q, setQ] = useState('');
 
     const fetchCharacters = () => {
 
@@ -44,27 +46,30 @@ const CharacterIndex = (props) => {
             fetchCharacters();
         }, [])
 
+        function search(characters) {
+            return characters.filter(
+                (character) => 
+                 character.project_name.toLowerCase().indexOf(q.toLowerCase()) > -1 ||
+                 character.name.toLowerCase().indexOf(q.toLowerCase()) > -1 
+                 )
+        }
+
 return(
 
     <div className='indexContainer'>
         <Container>
             <Row>
-
-                <Col md="8">
-                    <CharacterTable characters={characters} editUpdateCharacter={editUpdateCharacter}
-                    updateOn={updateOn}
-                    fetchCharacters={fetchCharacters} token={props.token}/>
-                </Col>
-
-                <Col md="4">
-                    <CharacterCreate fetchCharacters={fetchCharacters} token={props.token}/>
-                </Col>
-
-
+                <div>
+                    <input type="text" className="mr-sm-2" placeholder="Charecter Filter" value={q} onChange={(e) => setQ(e.target.value)} />
+                </div>
+                <CharacterTable characters={search(characters)} editUpdateCharacter={editUpdateCharacter} updateOn={updateOn} fetchCharacters={fetchCharacters}  token={props.token}/>
+            </Row>
+            <Row>
+                <CharacterCreate fetchCharacters={fetchCharacters} token={props.token}/>
+            </Row>
+                
                 {updateActive ? <CharacterEdit characterToUpdate={characterToUpdate}
                 updateOff={updateOff} token={props.token} fetchCharacters={fetchCharacters}/> : <></>}
-
-            </Row>
         </Container>
     </div>
     );

@@ -17,9 +17,9 @@ const Login = (props) => {
             headers: new Headers({
                 'Content-Type': 'application/json'
             })
-        }).then(
-            (response) => response.json()
-        ).then((data) => {
+        })
+        .then((response) => response.json())
+        .then((data) => {
             props.updateToken(data.sessionToken)
         })
     }
@@ -34,7 +34,7 @@ const Login = (props) => {
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="password">Password</Label>
-                    <Input onChange={(e) => setPassword(e.target.value)} name="password" value={password}/>
+                    <Input onChange={(e) => setPassword(e.target.value)} type='password' name="password" value={password}/>
                 </FormGroup>
 
                 <Button className='loginBtn' type="submit">Login</Button>

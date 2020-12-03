@@ -20,7 +20,8 @@ import {
     Row,
     Col,
     useModal,
-  ModalTransition
+  ModalTransition,
+  ModalBody
 }  from 'reactstrap';
 
 import CharacterTable from '../Characters/CharacterTable';
@@ -28,6 +29,7 @@ import CharacterCreate from '../Characters/CharacterCreate';
 
 
 const Sitebar = (props) => {
+
     const [show, setShow] = useState(false);
 
     
@@ -39,9 +41,12 @@ const Sitebar = (props) => {
   
     const [isOpen, setIsOpen] = useState(false);
 
-    const [dropdownOpen, setDropdownOpen] = useState(false);
+    // const [isOpen, setIsOpen] = useState(false);
 
-    const toggle = () => setDropdownOpen(!dropdownOpen);
+
+    // const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    // const toggle = () => setDropdownOpen(!dropdownOpen);
 
     const toggle2 = () => {
         setIsOpen(!isOpen);
@@ -50,13 +55,14 @@ const Sitebar = (props) => {
         setIsOpen(newIsOpen);
     }
 
-    const toggleSearch = () => {
-        (props.sessionToken === localStorage.getItem('token') ? 
-        <Form inline>
-            <Input type="text" placeholder="Search Character" className="mr-sm-2" />
-            <Button className="infoBtn" outline color="info">Search </Button>
-        </Form> : <div></div>)
-    }
+
+    // const toggleSearch = () => {
+    //     (props.sessionToken === localStorage.getItem('token') ? 
+    //     <Form inline>
+    //         <Input type="text" placeholder="Search Character" className="mr-sm-2" />
+    //         <Button className="infoBtn" outline color="info">Search </Button>
+    //     </Form> : <div></div>)
+    // }
     function copyToClipboard(e) {
         textAreaRef.current.select();
         document.execCommand('copy');
@@ -67,6 +73,15 @@ const Sitebar = (props) => {
       };
     
 
+    // const toggleSearch = () => {
+    //     (props.sessionToken === localStorage.getItem('token') ? 
+    //     <Form inline>
+    //         <Input type="text" placeholder="Search Character" className="mr-sm-2" />
+    //         <Button className="infoBtn" outline color="info">Search </Button>
+    //     </Form> : <div></div>)
+    // }
+
+
     return(
         
     <div className='parent'>
@@ -76,8 +91,8 @@ const Sitebar = (props) => {
 
             {/* <NavbarBrand className="blue"  href="/"> EPIC CHARACTER CREATOR</NavbarBrand> */}
             
-            <NavbarToggler onClick={toggle2}/>
-            <Collapse isOpen={isOpen} navbar>
+            {/* <NavbarToggler onClick={toggle2}/>
+            <Collapse isOpen={isOpen} navbar> */}
             <Nav className="mr-auto" >
                 <NavItem>
                     <NavLink className="blue" href="/">EPIC  CHARACTER CREATOR</NavLink>
@@ -107,41 +122,55 @@ const Sitebar = (props) => {
 
                     
                 <NavItem>
+                   
                     <NavLink className="invite" to="/invite">Invite Friends</NavLink>
-                    <Button onClick={toggle2}>Click</Button>
-                    <Modal isOpen={isOpen}>
-                        <ModalHeader>Invite Friends</ModalHeader>
+                    <NavItem/>
+                    <NavItem>
+
+                    </NavItem>
+                    <Modal isOpen={isOpen} className="invModal">
+                        {/* <ModalHeader className="invModal">Invite Friends</ModalHeader> */}
+                        <ModalBody className="invtForm">
+                            <h3 className="inviteTag">Invite Friends</h3>
+
+                            
                         <Col><div>
-          <button onClick={copyToClipboard}>Copy</button> 
+          <button className="copyBtn" onClick={copyToClipboard}>Copy</button> 
           {copySuccess}
         </div>
+                    
       
-      <Form>
-        <textarea
+      <Form className="invtForm">
+        <textarea className="textarea"
           ref={textAreaRef}
           value='https://edk-character-creator-client.herokuapp.com/
           '
-        />
+          />
       </Form>
-    <Button onClick={toggle2}></Button></Col>
+    <Button className="exitBtn" onClick={toggle2}>close</Button></Col>
+          </ModalBody >
                     </Modal>
+                </NavItem>
+                <NavItem>
+
+          <Button className="invitebtn" onClick={toggle2}>Invite</Button>
                 </NavItem>
         
             </Nav>
 
 
-            <div className='search'>
-                {/* <Form inline>
+            {/* <div className='search'>
+                <Form inline>
                     <Input type="text" placeholder="Search Character" className="mr-sm-2" />
                     <Button className="infoBtn" outline color="info">Search </Button>
                 </Form> */}
-                {toggleSearch()}
-            </div>
+                {/* {toggleSearch()} */}
+            {/* </div> */}
 
             <br/>
                 
             <Button className="logoutBtn" size="lg"  onClick={props.clickLogout}>Logout</Button>
-            </Collapse>
+            {/* </Collapse> */}
         </Navbar>
     
         {/* <Router>
