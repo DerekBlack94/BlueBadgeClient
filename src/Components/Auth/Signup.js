@@ -9,6 +9,7 @@ const Signup = (props) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [signupErrors, setSignupErrors] = useState('');
+    const [passwordErrors, setPasswordErrors] = useState('');
     
 
     const handleSubmit = async (event) => {
@@ -19,7 +20,7 @@ const Signup = (props) => {
             return;
         } 
         if (password.length < 6) {
-            setSignupErrors('password must contain at least 5 characters!');
+            setPasswordErrors('password must contain at least 5 characters!');
             return;
         }
         
@@ -67,6 +68,7 @@ const Signup = (props) => {
                 <FormGroup>
                     <Label htmlFor="password">Password</Label>
                     <Input onChange={(e) => setPassword(e.target.value)} type='password' name="password" value={password}/>
+                    {passwordErrors && (<div className='passwordErrors'>{passwordErrors}</div>)}
                 </FormGroup>
                 <Button className='signupBtn' type="submit">Signup</Button>
 
