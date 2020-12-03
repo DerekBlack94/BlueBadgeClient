@@ -75,3 +75,9 @@ hr {
   background-color: #352343;
   color: white;
 }
+
+.signupErrors{
+  color: rgb(148, 31, 31);
+  border: 2px solid rgb(105, 21, 21);
+  font-size: 3em;
+}
