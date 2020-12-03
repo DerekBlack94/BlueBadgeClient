@@ -87,15 +87,6 @@ const Sitebar = (props) => {
         
             </Nav>
 
-
-            <div className='search'>
-                <Form inline>
-                    <Input type="text" placeholder="Search Character" className="mr-sm-2" />
-                    <Button className="infoBtn" outline color="info">Search </Button>
-                </Form>
-                {/* {toggleSearch()} */}
-            </div>
-
             <br/>
                 
             <Button className="logoutBtn" size="lg"  onClick={props.clickLogout}>Logout</Button>
