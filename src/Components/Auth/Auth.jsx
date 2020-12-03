@@ -5,6 +5,8 @@ import {Container, Row, Col} from 'reactstrap';
 import './Auth.css'
 
 
+
+
 const Auth = (props) => {
     console.log(props)
     return(

@@ -4,8 +4,11 @@ import {Table, Button} from 'reactstrap';
 import APIURL from '../../helpers/environment'
 
 const CharacterTable = (props) => {
-    const deleteCharacter = (character) => {
-        fetch(`${APIURL}/character/${character.id}`, {
+
+    const deleteCharacter = ( character ) => {
+        fetch(`http://localhost:3000/character${character.id}`, {
+
+
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'appliction/json',
@@ -17,7 +20,11 @@ const CharacterTable = (props) => {
 
 
     const characterMapper = () => {
+
+      
+
         return props.characters.map((character, index) => {
+
             // const imageViewer = () => {
             //     character.image != null ? <a href={character.image} target='blank'>Click to View</a> : <div></div>
             // }

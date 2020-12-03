@@ -17,10 +17,14 @@ const CharacterCreate = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`${APIURL}/character/create`, {
+        fetch(`http://localhost:3000/character/create`, {
             method: 'POST',
             body: JSON.stringify({ character : {
-                project_name: project_name, name: name, age: age, race: race, gender: gender, character_description: character_description, background: background, /*image: image*/
+
+                project_name: project_name, name: name, age: age, race: race, gender: gender, character_description: character_description, background: background//, image: image
+
+              
+
 
             }}),
             headers: new Headers ({
@@ -52,6 +56,21 @@ const CharacterCreate = (props) => {
     //     }
     // };
 
+
+    const handleUpload = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("image", image.raw);
+
+        await fetch('http://localhost:3000/character/', {
+            method: "POST",
+            headers: {
+                "Content-Type": "multipart/form-data"
+            },
+            body: formData
+        });
+    };
+
     // const handleUpload = async e => {
     //     e.preventDefault();
     //     const formData = new FormData();
@@ -65,6 +84,7 @@ const CharacterCreate = (props) => {
     //         body: formData
     //     });
     // };
+
 
     return (
         <div className='createContainer'>
@@ -98,7 +118,10 @@ const CharacterCreate = (props) => {
                     <Label htmlFor='race'>Race:</Label>
                     <br />
                     <Input type='select' name='race' value={race} onChange={(e) => setRace(e.target.value.toString())}>
+
+
                         <option value='null'>Please pick a Race</option>
+
                         <option value="Human">Human</option>
                         <option value="High Elf">High Elf</option>
                         <option value="Dark Elf">Dark Elf</option>
@@ -116,7 +139,9 @@ const CharacterCreate = (props) => {
                     <Label htmlFor='gender'>Gender:</Label>
                     <br />
                     <Input type='select' name='gender' value={gender} onChange={(e) => setGender(e.target.value.toString())}>
-                        <option value='null'>Please pick a Gender</option>
+
+           <option value='null'>Please pick a Gender</option>
+
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Nonbinary">Nonbinary</option>
@@ -143,8 +168,13 @@ const CharacterCreate = (props) => {
                 <br />
                 
                 <Button type='submit' onSubmit={handleSubmit}>Create</Button>
+
+
+                {/* <label htmlFor="upload-button">
+=======
 {/* 
                 <label htmlFor="upload-button">
+>>>>>>> 8fd2947f9dc572e9eb4f887e31bfd4ff5d594153
                     {image.preview ? (
                         <img src={image.preview} alt="dummy" width="300" height="300" />
                     ) : (
@@ -163,7 +193,11 @@ const CharacterCreate = (props) => {
                     onChange={handleChange}
                 /> */}
 
+
+               
+
                 {/* <Button onClick={handleUpload}>Upload Image</Button> */}
+
 
 
             </Form>
