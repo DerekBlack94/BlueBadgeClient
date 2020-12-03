@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody} from 'reactstrap';
 import APIURL from '../../helpers/environment'
 
+
 const CharacterEdit = (props) => {
     const [editPN, setEditPN] = useState(props.characterToUpdate.project_name);
     const [editName, setEditName] = useState(props.characterToUpdate.name);
@@ -13,7 +14,9 @@ const CharacterEdit = (props) => {
 
     const characterUpdate = (event, character) => {
         event.preventDefault();
-        fetch(`${APIURL}/character${props.characterToUpdate.id}`, {
+
+        fetch(`http://localhost:3000/character${props.characterToUpdate.id}`, {
+
             method: 'PUT',
             body: JSON.stringify({character: {
                 project_name: editPN, name: editName, age: editAge, race: editRace, gender: editGender, character_description: editCD, background: editBG

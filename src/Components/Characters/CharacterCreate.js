@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import APIURL from '../../helpers/environment'
 
+
 const CharacterCreate = (props) => {
     const [project_name, setProject_Name] = useState('');
     const [name, setName] = useState('');
@@ -11,12 +12,16 @@ const CharacterCreate = (props) => {
     const [character_description, setCharacter_Description] = useState('');
     const [background, setBackground] = useState('');
 
+    const [image, setImage] = useState({ preview: "", raw: "" });
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`${APIURL}/character/create`, {
+        fetch(`http://localhost:3000/character/create`, {
             method: 'POST',
             body: JSON.stringify({ character : {
-                project_name: project_name, name: name, age: age, race: race, gender: gender, character_description: character_description, background: background
+                project_name: project_name, name: name, age: age, race: race, gender: gender, character_description: character_description, background: background//, image: image
+
             }}),
             headers: new Headers ({
                 'Content-Type': 'application/json',
@@ -28,7 +33,7 @@ const CharacterCreate = (props) => {
                 console.log(json);
                 setProject_Name('');
                 setName('');
-                setAge();
+                setAge('');
                 setRace('');
                 setGender('');
                 setCharacter_Description('');
@@ -37,8 +42,32 @@ const CharacterCreate = (props) => {
             })
     }
 
+
+    // const handleChange = e => {
+    //     if (e.target.files.length) {
+    //         setImage({
+    //         preview: URL.createObjectURL(e.target.files[0]),
+    //         raw: e.target.files[0]
+    //         });
+    //     }
+    // };
+
+    const handleUpload = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("image", image.raw);
+
+        await fetch('http://localhost:3000/character/', {
+            method: "POST",
+            headers: {
+                "Content-Type": "multipart/form-data"
+            },
+            body: formData
+        });
+    };
+
     return (
-        <div>
+        <div className='createContainer'>
             <h3>Create a Character!</h3>
             <Form onSubmit={handleSubmit}>
                 <FormGroup>
@@ -68,14 +97,14 @@ const CharacterCreate = (props) => {
                 <FormGroup>
                     <Label htmlFor='race'>Race:</Label>
                     <br />
-                    <Input type='select' name='race' value={race} onChange={(e) => setRace(e.target.value)}>
+                    <Input type='select' name='race' value={race} onChange={(e) => setRace(e.target.value.toString())}>
                         <option value="Human">Human</option>
-                        <option value="HighElf">High Elf</option>
-                        <option value="DarkElf">Dark Elf</option>
-                        <option value="WoodElf">Wood Elf</option>
+                        <option value="High Elf">High Elf</option>
+                        <option value="Dark Elf">Dark Elf</option>
+                        <option value="Wood Elf">Wood Elf</option>
                         <option value="Dwarf">Dwarf</option>
                         <option value="Tiefling">Tiefling</option>
-                        <option value="HalfOrc">Half Orc</option>
+                        <option value="Half Orc">Half Orc</option>
                         <option value="Hobbit">Hobbit</option>
                     </Input>
                 </FormGroup>
@@ -85,7 +114,7 @@ const CharacterCreate = (props) => {
                 <FormGroup>
                     <Label htmlFor='gender'>Gender:</Label>
                     <br />
-                    <Input type='select' name='gender' value={gender} onChange={(e) => setGender(e.target.value)}>
+                    <Input type='select' name='gender' value={gender} onChange={(e) => setGender(e.target.value.toString())}>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Nonbinary">Nonbinary</option>
@@ -112,7 +141,29 @@ const CharacterCreate = (props) => {
                 <br />
                 
                 <Button type='submit' onSubmit={handleSubmit}>Create</Button>
-                
+
+                {/* <label htmlFor="upload-button">
+                    {image.preview ? (
+                        <img src={image.preview} alt="dummy" width="300" height="300" />
+                    ) : (
+                    <>
+                        <span className="fa-stack fa-2x mt-3 mb-2">
+                            <i className="fas fa-circle fa-stack-2x" />
+                            <i className="fas fa-store fa-stack-1x fa-inverse" />
+                        </span>
+                    </>
+                    )}
+                </label>
+                <input
+                    type="file"
+                    id="upload-button"
+                    style={{ display: "none" }}
+                    onChange={handleChange}
+                />
+
+                <Button onClick={handleUpload}>Upload Image</Button> */}
+
+
             </Form>
         </div>
     )

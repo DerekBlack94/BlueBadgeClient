@@ -1,33 +1,72 @@
 .blue{
-    color:#D2691E;
+    color:#FBE7B1;
     font-weight: 900;
     font-size: 25px;
     font-family: 'Texturina', serif;
+    transition: 0.1s;
+    transition-timing-function: ease-in-out;
 }
+
+.blue:hover {
+    color: #B47555
+}
+
 .infoBtn {
     padding-right: 50%;
     margin-right: 5vw;
-    color: #007bff;
+    color: #FEF9EC;
     font-family: 'Texturina', serif;
-
+    border: 2px solid #FEF9EC;
+    position: relative;
 }
+
+.infoBtn:hover{
+    background-color: #955E42; 
+    border: 2px solid #FEF9EC;
+}
+
+
 .charDropdown {
     font-size: 23px;
     font-family: 'Texturina', serif;
     
 }
 .invite{
+    padding-top: 10px;
     font-size: 23px;
-   
     font-family: 'Texturina', serif;
-    
+    color: #FEF9EC;
+    transition: 0.1s;
+    transition-timing-function: ease-in-out;
 }
+
+.invite:hover {
+    color: #955E42;
+}
+
 .logoutBtn{
     font-family: 'Texturina', serif;
-
+    background-color: #FBE7B1;
+    color: black;
 }
+
+.logoutBtn:hover {
+    background-color: #955E42;
+    color: white;
+}
+
 .mr-sm-2{
     font-family: 'Texturina', serif;
+    background-color: #FEF9EC;
+    position: relative;
+}
 
+.search {
+    display: flex;
+    width: 500px;
+}
+
+.parent {
+    background-color: #4A315E;
 }
 

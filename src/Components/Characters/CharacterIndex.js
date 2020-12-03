@@ -5,13 +5,15 @@ import CharacterTable from './CharacterTable';
 import CharacterEdit from './CharacterEdit';
 import APIURL from '../../helpers/environment'
 
+
 const CharacterIndex = (props) => {
     const [characters, setCharacters] = useState([]);
     const [updateActive, setUpdateActive] = useState(false);
     const [characterToUpdate, setCharacterToUpdate] = useState({});
 
     const fetchCharacters = () => {
-        fetch(`${APIURL}/character`, {
+
+        fetch('http://localhost:3000/character', {
             method: 'GET',
             headers: new Headers ({
                 'Content-Type': 'application/json',
@@ -43,18 +45,22 @@ const CharacterIndex = (props) => {
         }, [])
 
 return(
-    <div>
+
+    <div className='indexContainer'>
         <Container>
             <Row>
 
-                <Col md="6">
+                <Col md="8">
+                    <CharacterTable characters={characters} editUpdateCharacter={editUpdateCharacter}
+                    updateOn={updateOn}
+                    fetchCharacters={fetchCharacters} token={props.token}/>
+                </Col>
+
+                <Col md="4">
                     <CharacterCreate fetchCharacters={fetchCharacters} token={props.token}/>
                 </Col>
-                <Col md="9">
-                    {/* <CharacterTable characters={characters} editUpdateCharacter={editUpdateCharacter}
-                    updateOn={updateOn}
-                    fetchCharacters={fetchCharacters} token={props.token}/> */}
-                </Col>
+
+
                 {updateActive ? <CharacterEdit characterToUpdate={characterToUpdate}
                 updateOff={updateOff} token={props.token} fetchCharacters={fetchCharacters}/> : <></>}
 

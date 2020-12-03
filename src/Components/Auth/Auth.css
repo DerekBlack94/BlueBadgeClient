@@ -1,0 +1,47 @@
+.auth-container {
+    padding-top: 30px;
+}
+
+.signup-col {
+    background-color: #FBE7B1;
+    color: black;
+    border: 5px solid #955E42;
+    border-radius: 6px;
+    padding: 15px 20px 15px 20px;
+}
+
+.login-col {
+    background-color: #FBE7B1;
+    color: black;
+    border: 5px solid #955E42;
+    border-radius: 6px;
+    padding: 15px 20px 10px 20px;
+}
+
+.loginBtn {
+    margin-right: 10px;
+    color: black;
+    background-color: #FEF9EC;
+    border: none;
+    margin-left: 41%;
+    margin-right: 42%;
+}
+
+.loginBtn:hover {
+    background-color: #955E42;
+    color: #FEF9EC;
+}
+
+.signupBtn {
+    margin-right: 10px;
+    color: black;
+    background-color: #FEF9EC;
+    border: none;
+    margin-left: 41%;
+    margin-right: 42%;
+}
+
+.signupBtn:hover {
+    background-color: #955E42;
+    color: #FEF9EC;
+}

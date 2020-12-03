@@ -1,10 +1,11 @@
+
  import React from 'react';
  import {Table, Button} from 'reactstrap';
  import APIURL from '../../helpers/environment'
 
 const CharacterTable = (props) => {
     const deleteCharacter = ( character ) => {
-        fetch(`${APIURL}/character${character.id}`, {
+        fetch(`http://localhost:3000/character${character.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'appliction/json',
@@ -14,8 +15,14 @@ const CharacterTable = (props) => {
         .then(() => props.fetchCharacter())
     }
 
+
     const characterMapper = () => {
-        return props.characters.map((character, index) => {
+        props.characters ? props.characters.map((character, index) => {
+            // const imageViewer = () => {
+            //     character.image != null ? <a href={character.image} target='blank'>Click to View</a> : <div></div>
+            // }
+
+            return(
             <tr key={index}>
                 <th scope='row'>{character.id}</th>
                 <td>{character.project_name}</td>
@@ -25,12 +32,16 @@ const CharacterTable = (props) => {
                 <td>{character.gender}</td>
                 <td>{character.character_description}</td>
                 <td>{character.background}</td>
+                {/* <td>{imageViewer()}</td> */}
+
                 <td>
                     <Button color='warning' onClick={() => {props.editUpdateCharacter(character); props.updateOn()}} >Edit</Button>
                     <Button color='danger' onClick={() => {deleteCharacter(character)}}>Delete</Button>
                 </td> 
             </tr>
-        })
+            )
+        }) : <p>Loading...</p>
+
     }
 
 
@@ -38,9 +49,11 @@ const CharacterTable = (props) => {
 
 
 return(
-    <div>
-        <h3>Character Display</h3> 
+
+    <div className='tableContainer'>
+        <h3>Characters</h3> 
         <hr />
+            <div className='characters'>
             <Table striped>
                 <thead>
                     <tr>
@@ -52,12 +65,16 @@ return(
                         <th>Gender</th>
                         <th>Description</th>
                         <th>Background</th>
+                        {/* <th>Image</th> */}
+
                     </tr>
                 </thead>
                 <tbody>
                     {characterMapper()}
                 </tbody>
             </Table>
+            </div>
+
     </div>
     );
 }
