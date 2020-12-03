@@ -16,9 +16,8 @@ const CharacterEdit = (props) => {
         event.preventDefault();
 
 
-        fetch(`http://localhost:3000/character${props.characterToUpdate.id}`, {
+        fetch(`${APIURL}/character${props.characterToUpdate.id}`, {
 
-       
 
 
             method: 'PUT',

@@ -15,7 +15,7 @@ const CharacterIndex = (props) => {
 
     const fetchCharacters = () => {
 
-        fetch('http://localhost:3000/character', {
+        fetch(`${APIURL}/character`, {
             method: 'GET',
             headers: new Headers ({
                 'Content-Type': 'application/json',
@@ -49,9 +49,9 @@ const CharacterIndex = (props) => {
         function search(characters) {
             return characters.filter(
                 (character) => 
-                 character.project_name.toLowerCase().indexOf(q.toLowerCase()) > -1 ||
-                 character.name.toLowerCase().indexOf(q.toLowerCase()) > -1 
-                 )
+                character.project_name.toLowerCase().indexOf(q.toLowerCase()) > -1 ||
+                character.name.toLowerCase().indexOf(q.toLowerCase()) > -1 
+                )
         }
 
 return(
