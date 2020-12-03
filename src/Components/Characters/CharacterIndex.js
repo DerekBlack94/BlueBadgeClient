@@ -60,7 +60,7 @@ return(
         <Container>
             <Row>
                 <div>
-                    <input type="text" className="mr-sm-2" placeholder="Charecter Filter" value={q} onChange={(e) => setQ(e.target.value)} />
+                    <input type="text" className="mr-sm-2" placeholder="Character Filter" value={q} onChange={(e) => setQ(e.target.value)} />
                 </div>
                 <CharacterTable characters={search(characters)} editUpdateCharacter={editUpdateCharacter} updateOn={updateOn} fetchCharacters={fetchCharacters}  token={props.token}/>
             </Row>
